@@ -12,3 +12,10 @@ D:\Source\CRMDBService\bin\Debug\ModelService.pdb
 D:\Source\CRMDBService\obj\Debug\ResolveAssemblyReference.cache
 D:\Source\CRMDBService\obj\Debug\CRMDBService.dll
 D:\Source\CRMDBService\obj\Debug\CRMDBService.pdb
+D:\SourceCode\Source\CRMV2\CRMDBService\bin\Debug\CRMDBService.dll
+D:\SourceCode\Source\CRMV2\CRMDBService\bin\Debug\CRMDBService.pdb
+D:\SourceCode\Source\CRMV2\CRMDBService\bin\Debug\ModelService.dll
+D:\SourceCode\Source\CRMV2\CRMDBService\bin\Debug\ModelService.pdb
+D:\SourceCode\Source\CRMV2\CRMDBService\obj\Debug\ResolveAssemblyReference.cache
+D:\SourceCode\Source\CRMV2\CRMDBService\obj\Debug\CRMDBService.dll
+D:\SourceCode\Source\CRMV2\CRMDBService\obj\Debug\CRMDBService.pdb

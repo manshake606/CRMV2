@@ -16,3 +16,12 @@ D:\Source\CRMControlService\bin\Debug\ModelService.pdb
 D:\Source\CRMControlService\obj\Debug\ResolveAssemblyReference.cache
 D:\Source\CRMControlService\obj\Debug\CRMControlService.dll
 D:\Source\CRMControlService\obj\Debug\CRMControlService.pdb
+D:\SourceCode\Source\CRMV2\CRMControlService\bin\Debug\CRMControlService.dll
+D:\SourceCode\Source\CRMV2\CRMControlService\bin\Debug\CRMControlService.pdb
+D:\SourceCode\Source\CRMV2\CRMControlService\bin\Debug\CRMDBService.dll
+D:\SourceCode\Source\CRMV2\CRMControlService\bin\Debug\ModelService.dll
+D:\SourceCode\Source\CRMV2\CRMControlService\bin\Debug\CRMDBService.pdb
+D:\SourceCode\Source\CRMV2\CRMControlService\bin\Debug\ModelService.pdb
+D:\SourceCode\Source\CRMV2\CRMControlService\obj\Debug\ResolveAssemblyReference.cache
+D:\SourceCode\Source\CRMV2\CRMControlService\obj\Debug\CRMControlService.dll
+D:\SourceCode\Source\CRMV2\CRMControlService\obj\Debug\CRMControlService.pdb

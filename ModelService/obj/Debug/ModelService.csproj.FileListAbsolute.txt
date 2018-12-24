@@ -8,3 +8,8 @@ D:\Source\ModelService\bin\Debug\ModelService.pdb
 D:\Source\ModelService\obj\Debug\ResolveAssemblyReference.cache
 D:\Source\ModelService\obj\Debug\ModelService.dll
 D:\Source\ModelService\obj\Debug\ModelService.pdb
+D:\SourceCode\Source\CRMV2\ModelService\bin\Debug\ModelService.dll
+D:\SourceCode\Source\CRMV2\ModelService\bin\Debug\ModelService.pdb
+D:\SourceCode\Source\CRMV2\ModelService\obj\Debug\ResolveAssemblyReference.cache
+D:\SourceCode\Source\CRMV2\ModelService\obj\Debug\ModelService.dll
+D:\SourceCode\Source\CRMV2\ModelService\obj\Debug\ModelService.pdb
