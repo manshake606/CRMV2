@@ -1,0 +1,10 @@
+D:\CRMServer\Source\ModelService\bin\Debug\ModelService.dll
+D:\CRMServer\Source\ModelService\bin\Debug\ModelService.pdb
+D:\CRMServer\Source\ModelService\obj\Debug\ResolveAssemblyReference.cache
+D:\CRMServer\Source\ModelService\obj\Debug\ModelService.dll
+D:\CRMServer\Source\ModelService\obj\Debug\ModelService.pdb
+D:\Source\ModelService\bin\Debug\ModelService.dll
+D:\Source\ModelService\bin\Debug\ModelService.pdb
+D:\Source\ModelService\obj\Debug\ResolveAssemblyReference.cache
+D:\Source\ModelService\obj\Debug\ModelService.dll
+D:\Source\ModelService\obj\Debug\ModelService.pdb

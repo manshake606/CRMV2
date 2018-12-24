@@ -1,0 +1,14 @@
+D:\CRMServer\Source\CRMDBService\bin\Debug\CRMDBService.dll
+D:\CRMServer\Source\CRMDBService\bin\Debug\CRMDBService.pdb
+D:\CRMServer\Source\CRMDBService\bin\Debug\ModelService.dll
+D:\CRMServer\Source\CRMDBService\bin\Debug\ModelService.pdb
+D:\CRMServer\Source\CRMDBService\obj\Debug\ResolveAssemblyReference.cache
+D:\CRMServer\Source\CRMDBService\obj\Debug\CRMDBService.dll
+D:\CRMServer\Source\CRMDBService\obj\Debug\CRMDBService.pdb
+D:\Source\CRMDBService\bin\Debug\CRMDBService.dll
+D:\Source\CRMDBService\bin\Debug\CRMDBService.pdb
+D:\Source\CRMDBService\bin\Debug\ModelService.dll
+D:\Source\CRMDBService\bin\Debug\ModelService.pdb
+D:\Source\CRMDBService\obj\Debug\ResolveAssemblyReference.cache
+D:\Source\CRMDBService\obj\Debug\CRMDBService.dll
+D:\Source\CRMDBService\obj\Debug\CRMDBService.pdb
