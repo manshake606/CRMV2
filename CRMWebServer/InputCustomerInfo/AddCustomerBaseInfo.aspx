@@ -365,7 +365,11 @@ body {
                             <asp:ListItem Value="5">主动上门</asp:ListItem>
                             <asp:ListItem Value="6">网络来源</asp:ListItem>
                             <asp:ListItem Value="7">个人渠道</asp:ListItem>
-                            <asp:ListItem Value="8">语言渠道</asp:ListItem>
+                            <asp:ListItem Value="9">环球雅思</asp:ListItem>
+                            <asp:ListItem Value="10">朗阁培训</asp:ListItem>
+                            <asp:ListItem Value="11">星马教育</asp:ListItem>
+                            <asp:ListItem Value="12">三立教育</asp:ListItem>
+                            <asp:ListItem Value="8">其他语言渠道</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
@@ -428,6 +432,31 @@ body {
                         主要意向国家：</td>
                     <td height="30" align="left" class="left_txt">
                         <asp:TextBox ID="txtIntentionCountry" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                                <tr>
+                    <td height="30" align="right" class="left_txt2">
+                        
+                        合同编号：</td>
+                    <td align="left" class="style4">
+                        <asp:TextBox ID="txtContractNum" runat="server" ></asp:TextBox>
+                    </td>
+                    <td width="8%" height="30" align="right"  class="left_txt2">
+                        
+                        是否参与背景提升：</td>
+                    <td height="30" align="left" class="left_txt">
+                        <asp:DropDownList ID="DDCustomerImprove" runat="server" Width="126px">
+                            <asp:ListItem Value="0">是</asp:ListItem>
+                            <asp:ListItem Value="1">否</asp:ListItem>
+                        </asp:DropDownList>
+                                    </td>
+                </tr>
+                <tr>
+                    <td width="20%" height="50" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                        工作经验：
+                    </td>
+                    <td width="30%" colspan="3" align="left" bgcolor="#f2f2f2">
+                        <asp:TextBox ID="txtWorkExperience" runat="server" Width="485px" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

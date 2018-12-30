@@ -164,7 +164,7 @@ cellPadding=0 width=100% border=0>
         <td width="51%" class="left_txt"><img src="images/icon-mail2.gif" width="16" height="11"> 
             网站服务邮箱：27557624@qq.com<br>
               <img src="images/icon-phone.gif" width="17" height="14"> 
-            官方网站：http://www.austarstudy.com/</td>
+            官方网站：http://www.wxliuxue.com/</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>

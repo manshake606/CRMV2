@@ -58,7 +58,8 @@ function showsubmenu(sid) {
     <div>
     <table width="100%" height="64" border="0" cellpadding="0" cellspacing="0" class="admin_topbg">
   <tr>
-    <td width="61%" height="64"><img src="images/logo3.gif" width="262" height="64"></td>
+    <td width="61%" height="64"><img src="images/澳星logo.gif" 
+            style="height: 50px; width: 158px; margin-right: 0px; margin-top: 0px"></td>
     <td width="39%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td height="38" class="style1" align=right>

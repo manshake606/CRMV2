@@ -49,14 +49,15 @@ background-color: #1D3647;
                   <td class="style1"></td>
                 </tr>
                 <tr>
-                  <td height="80" align="right" valign="top"><img src="images/logo5.png" width="279" height="68"></td>
+                  <td height="80" align="right" valign="top"><img src="images/澳星logo.gif" height="68" 
+                          style="width: 214px"></td>
                 </tr>
                 <tr>
                   <td height="115" align="right" valign="top">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                         <td width="35%">&nbsp;</td>
-                        <td height="25" colspan="2" class="left_txt" align="right"><p>1- 澳星环宇为出国的客户提供首选方案...</p></td>
+                        <td height="25" colspan="2" class="left_txt" align="right"><p>1- 澳星留学为出国的客户提供首选方案...</p></td>
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
@@ -68,8 +69,8 @@ background-color: #1D3647;
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
-                        <td width="30%" height="40"><img src="images/icon-demo.gif" width="16" height="16"><a href="http://www.austarstudy.com/" target="_blank" >使用说明</a> </td>
-                        <td width="35%"><img src="images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.austarstudy.com/" target="_blank" >在线客服</a></td>
+                        <td height="40" class="style2"></td>
+                        <td width="35%"><img src="images/icon-login-seaver.gif" width="16" height="16"><a href="http://www.wxliuxue.com/" target="_blank" >在线客服</a></td>
                         </tr>
                     </table>
                   </td>

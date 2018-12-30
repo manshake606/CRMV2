@@ -11,6 +11,20 @@
 
         
     </script>
+    
+    <script type="text/javascript" language="javascript">
+        function secBoard(n) {
+            for (i = 0; i < secTable.cells.length; i++)
+                secTable.cells[i].className = "sec1";
+            secTable.cells[n].className = "sec2";
+            for (i = 0; i < mainTable.tBodies.length; i++)
+                mainTable.tBodies[i].style.display = "none";
+            mainTable.tBodies[n].style.display = "block";
+        }
+                                            
+                                            
+                                            
+   </script>
 
     <link href="../css/skin.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -173,19 +187,7 @@
                                 <tr>
                                     <td>
 
-                                        <script language="javascript">
-                                            function secBoard(n) {
-                                                for (i = 0; i < secTable.cells.length; i++)
-                                                    secTable.cells[i].className = "sec1";
-                                                secTable.cells[n].className = "sec2";
-                                                for (i = 0; i < mainTable.tBodies.length; i++)
-                                                    mainTable.tBodies[i].style.display = "none";
-                                                mainTable.tBodies[n].style.display = "block";
-                                            }
-                                            
-                                            
-                                            
-                                        </script>
+                                        
 
                                         <!--HTML菜单导航-->
                                         <table width="72%" border="0" cellpadding="0" cellspacing="0" id="secTable">
@@ -198,8 +200,7 @@
                                                         意向信息
                                                     </td>
                                                     <td align="center" class="sec1" onclick="secBoard(2)">
-                                                        语言技能
-                                                    </td>
+                                                        能力测验</td>
                                                     <td align="center" class="sec1" onclick="secBoard(3)">
                                                         学校成绩排名
                                                     </td>
@@ -495,7 +496,11 @@
                                                                                                                 <asp:ListItem Value="5">主动上门</asp:ListItem>
                                                                                                                 <asp:ListItem Value="6">网络来源</asp:ListItem>
                                                                                                                 <asp:ListItem Value="7">个人渠道</asp:ListItem>
-                                                                                                                <asp:ListItem Value="8">语言渠道</asp:ListItem>
+                                                                                                                <asp:ListItem Value="9">环球雅思</asp:ListItem>
+                                                                                                                <asp:ListItem Value="10">朗阁培训</asp:ListItem>
+                                                                                                                <asp:ListItem Value="11">星马教育</asp:ListItem>
+                                                                                                                <asp:ListItem Value="12">三立教育</asp:ListItem>
+                                                                                                                <asp:ListItem Value="8">其他语言渠道</asp:ListItem>
                                                                                                             </asp:DropDownList>
                                                                                                         </td>
                                                                                                         <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
@@ -546,13 +551,32 @@
                                                                                                         </td>
                                                                                                         <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
                                                                                                           
-                                                                                                        </td>
+                                                                                                            是否参与背景提升</td>
                                                                                                         <td height="30" align="left" class="left_txt">
                                                                                                             
+                                                                                                            <asp:DropDownList ID="ddlCustomerImprove" runat="server" AutoPostBack="True" 
+                                                                                                                Width="126px">
+                                                                                                                <asp:ListItem Value="0">是</asp:ListItem>
+                                                                                                                <asp:ListItem Value="1">否</asp:ListItem>
+                                                                                                            </asp:DropDownList>
+                                                                                                            
                                                                                                         </td>
-                                                                                                    
-                                                                                                    
-                                                                                                    
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                    <td height="30" align="right" class="left_txt2">
+                                                                                                            合同编号：
+                                                                                                        </td>
+                                                                                                        <td align="left">
+                                                                                                            <asp:TextBox ID="txtContractNum" runat="server" Enabled="False"></asp:TextBox>
+                                                                                                        </td>
+                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                          
+                                                                                                           </td>
+                                                                                                        <td height="30" align="left" class="left_txt">
+                                                                                                            
+                                                                                                            
+                                                                                                            
+                                                                                                        </td>
                                                                                                     </tr>
                                                                                                     <tr>
                                                                                                         <td width="20%" height="50" align="right" bgcolor="#f2f2f2" class="left_txt2">
@@ -560,6 +584,14 @@
                                                                                                         </td>
                                                                                                         <td width="30%" colspan="3" align="left" bgcolor="#f2f2f2">
                                                                                                             <asp:TextBox ID="txtRemark" runat="server" Width="568px" TextMode="MultiLine"></asp:TextBox>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td width="20%" height="50" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                            工作经验：
+                                                                                                        </td>
+                                                                                                        <td width="30%" colspan="3" align="left" bgcolor="#f2f2f2">
+                                                                                                            <asp:TextBox ID="txtWorkExperience" runat="server" Width="568px" TextMode="MultiLine"></asp:TextBox>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
@@ -1020,11 +1052,12 @@
                                                                                                     <td align="left" style="width: 100px">
                                                                                                         <asp:DropDownList ID="DDLIntentionPhase" runat="server" Width="127px">
                                                                                                             <asp:ListItem Value="0">未定</asp:ListItem>
-                                                                                                            <asp:ListItem Value="1">初中</asp:ListItem>
-                                                                                                            <asp:ListItem Value="2">高中</asp:ListItem>
-                                                                                                            <asp:ListItem Value="3">本科</asp:ListItem>
-                                                                                                            <asp:ListItem Value="4">硕士</asp:ListItem>
-                                                                                                            <asp:ListItem Value="5">博士</asp:ListItem>
+                                                                                                            <asp:ListItem Value="1">小学</asp:ListItem>
+                                                                                                            <asp:ListItem Value="2">初中</asp:ListItem>
+                                                                                                            <asp:ListItem Value="3">高中</asp:ListItem>
+                                                                                                            <asp:ListItem Value="4">本科</asp:ListItem>
+                                                                                                            <asp:ListItem Value="5">硕士</asp:ListItem>
+                                                                                                            <asp:ListItem Value="6">博士</asp:ListItem>
                                                                                                         </asp:DropDownList>
                                                                                                     </td>
                                                                                                     <td height="30" align="right" class="style4">
@@ -1119,7 +1152,7 @@
                                                                                                             BorderColor="#999999" BorderStyle="Groove" BorderWidth="2px">
                                                                                                             <RowStyle HorizontalAlign="Center" />
                                                                                                             <Columns>
-                                                                                                                <asp:TemplateField HeaderText="语种名称">
+                                                                                                                <asp:TemplateField HeaderText="测验名称">
                                                                                                                     <EditItemTemplate>
                                                                                                                         <asp:TextBox ID="txtLGIName" runat="server" Text='<%# Bind("LGIName") %>'></asp:TextBox>
                                                                                                                     </EditItemTemplate>
@@ -1127,7 +1160,7 @@
                                                                                                                         <asp:Label ID="LabLGIName" runat="server" Text='<%# Bind("LGIName") %>'></asp:Label>
                                                                                                                     </ItemTemplate>
                                                                                                                 </asp:TemplateField>
-                                                                                                                <asp:TemplateField HeaderText="语种得分">
+                                                                                                                <asp:TemplateField HeaderText="测验得分">
                                                                                                                     <EditItemTemplate>
                                                                                                                         <asp:TextBox ID="txtScore" runat="server" Text='<%# Bind("Score") %>'></asp:TextBox>
                                                                                                                     </EditItemTemplate>
@@ -1172,22 +1205,22 @@
                                                                                     <tr>
                                                                                         <td height="30">
                                                                                             <span style="float: left">
-                                                                                                <input id="Button8" type="button" value="语种添加" onclick="show(this.value)" align="left" />
+                                                                                                <input id="Button8" type="button" value="测验添加" onclick="show(this.value)" align="left" />
                                                                                             </span>
                                                                                         </td>
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td align="center" height="30">
-                                                                                            <table id="语种添加" border="0" cellpadding="0" cellspacing="0" style="display: none;">
+                                                                                            <table id="测验添加" border="0" cellpadding="0" cellspacing="0" style="display: none;">
                                                                                                 <tr>
                                                                                                     <td width="25%" height="30" align="right" class="left_txt2" style="width: 100px">
-                                                                                                        语种名称：
+                                                                                                        测验名称：
                                                                                                     </td>
                                                                                                     <td style="width: 100px">
                                                                                                         <asp:TextBox ID="txtLanguageName" runat="server"></asp:TextBox>
                                                                                                     </td>
                                                                                                     <td height="30" align="right" class="style4">
-                                                                                                        语种得分：
+                                                                                                        测验得分：
                                                                                                     </td>
                                                                                                     <td style="width: 100px">
                                                                                                         <asp:TextBox ID="txtLanguageScore" runat="server"></asp:TextBox>
@@ -1268,6 +1301,22 @@
                                                                                     <tr>
                                                                                         <td height="30">
                                                                                             <table width="100%" height="89" border="0" cellpadding="0" cellspacing="0">
+                                                                                                <tr>
+                                                                                                    <td width="30%" align="right" bgcolor="#FAFBFC" class="style1">
+                                                                                                        在读学校：
+                                                                                                    </td>
+                                                                                                    <td align="left" bgcolor="#FAFBFC">
+                                                                                                        <asp:TextBox ID="txtCurrentSchool" runat="server" Width="304px"></asp:TextBox>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="30%" align="right" bgcolor="#FAFBFC" class="style1">
+                                                                                                        专业：
+                                                                                                    </td>
+                                                                                                    <td align="left" bgcolor="#FAFBFC">
+                                                                                                        <asp:TextBox ID="txtMajor" runat="server" Width="304px"></asp:TextBox>
+                                                                                                    </td>
+                                                                                                </tr>
                                                                                                 <tr>
                                                                                                     <td width="30%" align="right" bgcolor="#FAFBFC" class="style1">
                                                                                                         学校平均成绩：
