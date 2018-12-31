@@ -227,6 +227,9 @@ namespace CRMWebServer.InputCustomerInfo
             CIF.ImportingPeople = txtImportingPeople.Text.Trim();
             CIF.ImportingDate = DateTime.Now;
             CIF.Remark = txtRemark.Text.Trim();
+            CIF.ContractNum = txtContractNum.Text.Trim();
+            CIF.CustomerImprove = int.Parse(DDCustomerImprove.SelectedItem.Value.Trim());
+            CIF.WorkExperience = txtWorkExperience.Text.Trim();
             ITA.IntentionCountry = txtIntentionCountry.Text.Trim();
             ITA.BetterWantpriTo = 0;
             ITA.IntentionCity = "";

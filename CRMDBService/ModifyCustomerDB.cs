@@ -56,7 +56,10 @@ namespace CRMDBService
             str += "[CustomerFrom],";
             str += "[FromData],";
             str += "[Reference],";
-            str += "[ReferenceRemark])";
+            str += "[ReferenceRemark],";
+            str += "[ContractNum],";
+            str += "[CustomerImprove],";
+            str += "[WorkExperience])";
             str += " VALUES(";
             if (CI.CustomerName == null)
             {
@@ -254,11 +257,28 @@ namespace CRMDBService
             }
             if (CI.ReferenceRemark == null)
             {
+                str += "NULL,";
+            }
+            else
+            {
+                str += "'" + CI.ReferenceRemark + "',";
+            }
+            if (CI.ContractNum == null)
+            {
+                str += "NULL,";
+            }
+            else
+            {
+                str += "'" + CI.ContractNum + "',";
+            }
+            str += "" + CI.CustomerImprove + ",";
+            if (CI.WorkExperience == null)
+            {
                 str += "NULL)";
             }
             else
             {
-                str += "'" + CI.ReferenceRemark + "')";
+                str += "'" + CI.WorkExperience + "')";
             }
             
             DbCommand cmd = db.GetSqlStringCommond(str);
@@ -303,6 +323,9 @@ namespace CRMDBService
             str += "[FromData]='" + CIF.FromData + "',";
             str += "[Reference]='" + CIF.Reference + "',";
             str += "[ReferenceRemark]='" + CIF.ReferenceRemark + "'";
+            str += "[ContractNum]='" + CIF.ContractNum + "'";
+            str += "[CustomerImprove]='" + CIF.CustomerImprove + "'";
+            str += "[WorkExperience]='" + CIF.WorkExperience + "'";
             str += " From CustomerInfo";
             str += " where ";
             str += "CustomerInfo.CustomerID='" + CIF.CustomerID + "'";
@@ -354,7 +377,10 @@ namespace CRMDBService
             str += "[FromData],";
             str += "[AdmissionPhase],";
             str += "[Reference],";
-            str += "[ReferenceRemark]";
+            str += "[ReferenceRemark],";
+            str += "[ContractNum],";
+            str += "[CustomerImprove],";
+            str += "[WorkExperience]";
             str += " From CustomerInfo";
             str += " where ";
             str += "TelPhone='" + Telphone + "'";
@@ -407,7 +433,10 @@ namespace CRMDBService
             str += "[CustomerFrom],";
             str += "[FromData],";
             str += "[Reference],";
-            str += "[ReferenceRemark]";
+            str += "[ReferenceRemark],";
+            str += "[ContractNum],";
+            str += "[CustomerImprove],";
+            str += "[WorkExperience]";
             str += " From CustomerInfo";
             str += " where ";
             str += "CustomerID=" + CustomerID + "";
@@ -455,7 +484,10 @@ namespace CRMDBService
             str += "[CustomerFrom],";
             str += "[FromData],";
             str += "[Reference],";
-            str += "[ReferenceRemark]";
+            str += "[ReferenceRemark],";
+            str += "[ContractNum],";
+            str += "[CustomerImprove],";
+            str += "[WorkExperience]";
             str += " From CustomerInfo";
             str += " where ";
             str += "CustomerID=" + CustomerID + "";
@@ -495,6 +527,9 @@ namespace CRMDBService
             CIF.FromData = ds.Tables[0].Rows[0]["FromData"].ToString();
             CIF.Reference = ds.Tables[0].Rows[0]["Reference"].ToString();
             CIF.ReferenceRemark = ds.Tables[0].Rows[0]["ReferenceRemark"].ToString();
+            CIF.ContractNum = ds.Tables[0].Rows[0]["ContractNum"].ToString();
+            CIF.CustomerImprove = int.Parse(ds.Tables[0].Rows[0]["CustomerImprove"].ToString());
+            CIF.WorkExperience = ds.Tables[0].Rows[0]["WorkExperience"].ToString();
             return CIF;
         }
 
@@ -1088,26 +1123,30 @@ namespace CRMDBService
             return ds;
         }
 
-        public void UpdateSchoolInfo(string AverageScore, string Ranking, string SchoolOtherInfo,string CustomerID)
+        public void UpdateSchoolInfo(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID, string CurrentSchool, string Major)
         {
             DbHelper db = new DbHelper();
             string str = "";
             str += "Update CustomerInfo set";
             str += " [AverageScore]='" + AverageScore + "',";
             str += " [Ranking]='" + Ranking + "',";
-            str += " [SchoolOtherInfo]='" + SchoolOtherInfo + "'";
+            str += " [SchoolOtherInfo]='" + SchoolOtherInfo + "',";
+            str += " [Major]='" + Major + "',";
+            str += " [CurrentSchool]='" + CurrentSchool + "'";
             str += " where CustomerInfo.CustomerID=" + CustomerID;
             DbCommand cmd = db.GetSqlStringCommond(str);
             db.ExecuteNonQuery(cmd);
         }
 
-        public void DeleteSchoolInfo(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID)
+        public void DeleteSchoolInfo(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID, string CurrentSchool, string Major)
         {
             DbHelper db = new DbHelper();
             string str = "";
             str += "Update CustomerInfo set";
             str += " [AverageScore]='',";
             str += " [Ranking]='',";
+            str += " [CurrentSchool]='',";
+            str += " [Major]='',";
             str += " [SchoolOtherInfo]=''";
             str += " where CustomerInfo.CustomerID=" + CustomerID;
             DbCommand cmd = db.GetSqlStringCommond(str);

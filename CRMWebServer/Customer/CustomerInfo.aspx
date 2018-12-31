@@ -336,6 +336,37 @@
                                                             </td>
                                                         </tr> 
                                                         <tr>
+                                                            <td width="8%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">
+ <asp:CheckBox ID="ckbContactNum" runat="server" Text="合同编号：" AutoPostBack="True" oncheckedchanged="ckbImportingPeople_CheckedChanged" />
+                                                               
+                                                            </td>
+                                                            <td bgcolor="#f2f2f2" class="style5">
+                                                               
+                                                                <asp:TextBox ID="txtContactNum" runat="server" Enabled="False"></asp:TextBox>
+                                           
+                                                            </td>
+                                                            <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+ <asp:CheckBox ID="ckbCustomerImprove" runat="server" Text="提升背景：" AutoPostBack="True" 
+                                                                    oncheckedchanged="ckbFollowUpConsultant_CheckedChanged"/>
+                                                            </td>
+                                                            <td width="15%" bgcolor="#f2f2f2">
+                                                                
+                                                                <asp:DropDownList ID="DDCustomerImprove" runat="server" Enabled="False">
+                                                                </asp:DropDownList>
+                                                            </td>
+                                                            <td width="6%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">
+                                                                &nbsp;</td>
+                                                            <td bgcolor="#f2f2f2" class="style5">
+       <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtFollowUpCopy"  ErrorMessage="只能为字母" CssClass="left_txt" ValidationExpression="^[a-zA-Z]{1,12}$">
+       </asp:RegularExpressionValidator> --%>
+                                                            </td>
+                                                        </tr> 
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <tr>
                                                             <td width="8%" align="left" bgcolor="#f2f2f2" class="style6">
                                                                 <asp:CheckBox ID="ckbCellPhoneNumber" runat="server" Text="客户手机号：" 
                                                                     AutoPostBack="True" oncheckedchanged="ckbCellPhoneNumber_CheckedChanged" />

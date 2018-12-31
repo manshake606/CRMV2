@@ -486,12 +486,12 @@ namespace CRMControlService
             return DS;
         }
 
-        public int UpdateSchoolInfo_Service(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID)
+        public int UpdateSchoolInfo_Service(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID, string CurrentSchool, string Major)
         {
             int Pass = 0;
             try
             {
-                MCDB.UpdateSchoolInfo(AverageScore, Ranking, SchoolOtherInfo, CustomerID);
+                MCDB.UpdateSchoolInfo(AverageScore, Ranking, SchoolOtherInfo, CustomerID, CurrentSchool, Major);
             }
             catch
             {
@@ -500,12 +500,12 @@ namespace CRMControlService
             return Pass;
         }
 
-        public int DeleteSchoolInfo_Service(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID)
+        public int DeleteSchoolInfo_Service(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID, string CurrentSchool, string Major)
         {
             int Pass = 0;
             try
             {
-                MCDB.DeleteSchoolInfo(AverageScore, Ranking, SchoolOtherInfo, CustomerID);
+                MCDB.DeleteSchoolInfo(AverageScore, Ranking, SchoolOtherInfo, CustomerID, CurrentSchool, Major);
             }
             catch
             {

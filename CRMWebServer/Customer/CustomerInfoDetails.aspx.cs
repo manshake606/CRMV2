@@ -996,7 +996,7 @@ namespace CRMWebServer.Customer
 
         protected void btnStudiesUpdate_Click(object sender, EventArgs e)
         {
-            int Pass = MCS.UpdateSchoolInfo_Service(txtAverageScore.Text.Trim(), txtSchoolRankings.Text.Trim(), txtOtherStudy.Text.Trim(), CSIF.CustomerID.ToString());
+            int Pass = MCS.UpdateSchoolInfo_Service(txtAverageScore.Text.Trim(), txtSchoolRankings.Text.Trim(), txtOtherStudy.Text.Trim(), CSIF.CustomerID.ToString(),txtCurrentSchool.Text.Trim(),txtMajor.Text.Trim());
             if (Pass == 0)
             {
                 ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('更新学校信息成功!')</script>", false);
@@ -1006,7 +1006,7 @@ namespace CRMWebServer.Customer
 
         protected void btnStudiesCancel_Click(object sender, EventArgs e)
         {
-            int Pass = MCS.DeleteSchoolInfo_Service(txtAverageScore.Text.Trim(), txtSchoolRankings.Text.Trim(), txtOtherStudy.Text.Trim(), CSIF.CustomerID.ToString());
+            int Pass = MCS.DeleteSchoolInfo_Service(txtAverageScore.Text.Trim(), txtSchoolRankings.Text.Trim(), txtOtherStudy.Text.Trim(), CSIF.CustomerID.ToString(),txtCurrentSchool.Text.Trim(),txtMajor.Text.Trim());
             if (Pass == 0)
             {
                 ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('清空学校信息成功!')</script>", false);
@@ -1014,6 +1014,9 @@ namespace CRMWebServer.Customer
             txtAverageScore.Text = "";
             txtSchoolRankings.Text = "";
             txtOtherStudy.Text = "";
+            txtCurrentSchool.Text = "";
+            txtMajor.Text = "";
+
         }
 
         protected void btnAddFamilyInfo_Click(object sender, EventArgs e)
