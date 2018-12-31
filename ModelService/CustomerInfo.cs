@@ -723,5 +723,59 @@ namespace ModelService
             }
         }
         #endregion
+
+        private string _ContractNum;
+        #region 合同编号
+        /// <summary>
+        /// 合同编号
+        /// </summary>
+        public string ContractNum
+        {
+            get
+            {
+                return _ContractNum;
+            }
+            set
+            {
+                _ContractNum = value;
+            }
+        }
+        #endregion 
+
+        private int _CustomerImprove;
+        #region 是否参与背景提升
+        /// <summary>
+        /// 是否参与背景提升
+        /// </summary>
+        public int CustomerImprove
+        {
+            get
+            {
+                return _CustomerImprove;
+            }
+            set
+            {
+                _CustomerImprove = value;
+            }
+        }
+        #endregion 
+
+        private string _WorkExperience;
+        #region 工作经验
+        /// <summary>
+        /// 是否参与背景提升
+        /// </summary>
+        public string WorkExperience
+        {
+            get
+            {
+                return _WorkExperience;
+            }
+            set
+            {
+                _WorkExperience = value;
+            }
+        }
+        #endregion 
     }
 }

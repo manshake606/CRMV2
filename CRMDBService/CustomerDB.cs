@@ -95,6 +95,9 @@ namespace CRMDBService
             SqlQuery += ",[FromData]";
             SqlQuery += ",[Reference]";
             SqlQuery += ",[ReferenceRemark]";
+            SqlQuery += ",[ContractNum]";
+            SqlQuery += ",[CustomerImprove]";
+            SqlQuery += ",[WorkExperience]";
             SqlQuery += " from";
             SqlQuery += " CustomerInfo";
             DbCommand cmd = dbh.GetSqlStringCommond(SqlQuery);
@@ -148,6 +151,9 @@ namespace CRMDBService
             SqlQuery += ",[FromData]";
             SqlQuery += ",[Reference]";
             SqlQuery += ",[ReferenceRemark]";
+            SqlQuery += ",[ContractNum]";
+            SqlQuery += ",[CustomerImprove]";
+            SqlQuery += ",[WorkExperience]";
             SqlQuery += " from";
             SqlQuery += " CustomerInfo";
             SqlQuery += " where";
@@ -439,6 +445,9 @@ namespace CRMDBService
             SqlQuery += ",[FromData]";
             SqlQuery += ",[Reference]";
             SqlQuery += ",[ReferenceRemark]";
+            SqlQuery += ",[ContractNum]";
+            SqlQuery += ",[CustomerImprove]";
+            SqlQuery += ",[WorkExperience]";
             SqlQuery += ",[IntentionCountry]";
             SqlQuery += ",[StaffName]";
             SqlQuery += ",[LatestTime]";
@@ -506,7 +515,10 @@ namespace CRMDBService
             SqlQuery += ",[CustomerFrom]";
             SqlQuery += ",[FromData]";
             SqlQuery += ",[Reference]";
-            SqlQuery += ",[ReferenceRemark]";            
+            SqlQuery += ",[ReferenceRemark]";
+            SqlQuery += ",[ContractNum]";
+            SqlQuery += ",[CustomerImprove]";
+            SqlQuery += ",[WorkExperience]";
             SqlQuery += ",[IntentionCountry]";
             SqlQuery += ",[StaffName]";
             
