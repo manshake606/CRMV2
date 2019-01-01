@@ -551,7 +551,7 @@
                                                                                                         </td>
                                                                                                         <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
                                                                                                           
-                                                                                                            是否参与背景提升</td>
+                                                                                                            是否背景提升</td>
                                                                                                         <td height="30" align="left" class="left_txt">
                                                                                                             
                                                                                                             <asp:DropDownList ID="ddlCustomerImprove" runat="server" AutoPostBack="True" 
@@ -1322,7 +1322,8 @@
                                                                                                         学校平均成绩：
                                                                                                     </td>
                                                                                                     <td align="left" bgcolor="#FAFBFC">
-                                                                                                        <asp:TextBox ID="txtAverageScore" runat="server" Width="304px"></asp:TextBox>
+                                                                                                        <asp:TextBox ID="txtAverageScore" runat="server" Width="304px" class="style1"></asp:TextBox>
+                
                                                                                                     </td>
                                                                                                 </tr>
                                                                                                 <tr>

@@ -443,7 +443,7 @@ body {
                     </td>
                     <td width="8%" height="30" align="right"  class="left_txt2">
                         
-                        是否参与背景提升：</td>
+                        是否背景提升：</td>
                     <td height="30" align="left" class="left_txt">
                         <asp:DropDownList ID="DDCustomerImprove" runat="server" Width="126px">
                             <asp:ListItem Value="0">是</asp:ListItem>

@@ -45,6 +45,7 @@ namespace CRMWebServer.Customer
         ContactState CS = new ContactState();
         CRMControlService.ContactStateService css = new ContactStateService();
         StaffInfo staffInfo = new StaffInfo();
+        
         string moduleID = ConfigurationManager.AppSettings["CustomerInfo"];
         int authority = 0;
         CRMControlService.AuthorityService AS = new AuthorityService();
@@ -503,9 +504,14 @@ namespace CRMWebServer.Customer
         public void BindSchool()
         {
             DSSchool = MCS.GetSchoolInfobyCustomerID_Service(CSIF.CustomerID);
-            txtAverageScore.Text = DSSchool.Tables[0].Rows[0]["AverageScore"].ToString();
-            txtSchoolRankings.Text = DSSchool.Tables[0].Rows[0]["Ranking"].ToString();
-            txtOtherStudy.Text = DSSchool.Tables[0].Rows[0]["SchoolOtherInfo"].ToString();
+            if (DSSchool.Tables[0].Rows.Count!=0)
+            {
+                txtAverageScore.Text = DSSchool.Tables[0].Rows[0]["AverageScore"].ToString();
+                txtSchoolRankings.Text = DSSchool.Tables[0].Rows[0]["Ranking"].ToString();
+                txtOtherStudy.Text = DSSchool.Tables[0].Rows[0]["SchoolOtherInfo"].ToString();
+                txtCurrentSchool.Text = DSSchool.Tables[0].Rows[0]["CurrentSchool"].ToString();
+                txtMajor.Text = DSSchool.Tables[0].Rows[0]["Major"].ToString();
+            }
         }
 
         public void BindFamily()
@@ -585,6 +591,17 @@ namespace CRMWebServer.Customer
             txtImportingPeople.Text = CSIF.ImportingPeople;
             txtImportingTime.Text = CSIF.ImportingDate.ToString();
             txtRemark.Text = CSIF.Remark;
+            txtContractNum.Text = CSIF.ContractNum;
+            if (CSIF.CustomerImprove == 0)
+            {
+                ddlCustomerImprove.SelectedIndex = 0;
+            }
+            else
+            {
+                ddlCustomerImprove.SelectedIndex = 1;
+            }
+            txtWorkExperience.Text = CSIF.WorkExperience;
+
         }
 
         public void BindFollow()
@@ -996,11 +1013,47 @@ namespace CRMWebServer.Customer
 
         protected void btnStudiesUpdate_Click(object sender, EventArgs e)
         {
-            int Pass = MCS.UpdateSchoolInfo_Service(txtAverageScore.Text.Trim(), txtSchoolRankings.Text.Trim(), txtOtherStudy.Text.Trim(), CSIF.CustomerID.ToString(),txtCurrentSchool.Text.Trim(),txtMajor.Text.Trim());
-            if (Pass == 0)
+            DataSet SRI = MCS.GetSchoolInfobyCustomerID_Service(CSIF.CustomerID);
+            if (SRI.Tables[0].Rows.Count < 1)
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('更新学校信息成功!')</script>", false);
+                SchoolRankInfo NSRI = new SchoolRankInfo();
+                NSRI.CustomerID = CSIF.CustomerID;
+                if (txtAverageScore.Text.Trim() != null && txtAverageScore.Text.Trim() != "")
+                {
+                    NSRI.AverageScore = float.Parse(txtAverageScore.Text.Trim());
+                }
+                if (txtSchoolRankings.Text.Trim() != null && txtSchoolRankings.Text.Trim() != "")
+                {
+                    NSRI.Ranking = int.Parse(txtSchoolRankings.Text.Trim());
+                }
+                if (txtOtherStudy.Text.Trim() != null && txtOtherStudy.Text.Trim() != "")
+                {
+                    NSRI.SchoolOtherInfo = txtOtherStudy.Text.Trim();
+                }
+                if (txtCurrentSchool.Text.Trim() != null && txtCurrentSchool.Text.Trim() != "")
+                {
+                    NSRI.CurrentSchool = txtCurrentSchool.Text.Trim();
+                }
+                if (txtMajor.Text.Trim() != null && txtMajor.Text.Trim() != "")
+                {
+                    NSRI.Major = txtMajor.Text.Trim();
+                }
+                int Insert = MCS.InsertSchoolRankInfo_Service(NSRI);
+                if (Insert == 0)
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('插入学校信息成功!')</script>", false);
+                }
+
             }
+            else
+            {
+                int Pass = MCS.UpdateSchoolInfo_Service(txtAverageScore.Text.Trim(), txtSchoolRankings.Text.Trim(), txtOtherStudy.Text.Trim(), CSIF.CustomerID.ToString(), txtCurrentSchool.Text.Trim(), txtMajor.Text.Trim());
+                if (Pass == 0)
+                {
+                    ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('更新学校信息成功!')</script>", false);
+                }
+            }
+            
 
         }
 

@@ -337,17 +337,17 @@
                                                         </tr> 
                                                         <tr>
                                                             <td width="8%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">
- <asp:CheckBox ID="ckbContactNum" runat="server" Text="合同编号：" AutoPostBack="True" oncheckedchanged="ckbImportingPeople_CheckedChanged" />
+ <asp:CheckBox ID="ckbContractNum" runat="server" Text="合同编号：" AutoPostBack="True" oncheckedchanged="ckbContractNum_CheckedChanged"/>
                                                                
                                                             </td>
                                                             <td bgcolor="#f2f2f2" class="style5">
                                                                
-                                                                <asp:TextBox ID="txtContactNum" runat="server" Enabled="False"></asp:TextBox>
+                                                                <asp:TextBox ID="txtContractNum" runat="server" Enabled="False"></asp:TextBox>
                                            
                                                             </td>
                                                             <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
- <asp:CheckBox ID="ckbCustomerImprove" runat="server" Text="提升背景：" AutoPostBack="True" 
-                                                                    oncheckedchanged="ckbFollowUpConsultant_CheckedChanged"/>
+ <asp:CheckBox ID="ckbCustomerImprove" runat="server" Text="提升背景：" AutoPostBack="True" oncheckedchanged="ckbCustomerImprove_CheckedChanged" 
+                                                                    />
                                                             </td>
                                                             <td width="15%" bgcolor="#f2f2f2">
                                                                 

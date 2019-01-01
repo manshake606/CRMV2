@@ -20,6 +20,11 @@ namespace ModelService
         private string _SchoolOtherInfo;
         //备注
         private string _Remark;
+        //在读学校
+        private string _CurrentSchool;
+        //专业
+        private string _Major;
+
 
         #region 成绩编号ID
         /// <summary>
@@ -119,6 +124,40 @@ namespace ModelService
             set
             {
                 _Remark = value;
+            }
+        }
+        #endregion
+
+        #region 在读学校
+        /// <summary>
+        /// 在读学校
+        /// </summary>
+        public string CurrentSchool
+        {
+            get
+            {
+                return _CurrentSchool;
+            }
+            set
+            {
+                _CurrentSchool = value;
+            }
+        }
+        #endregion
+
+        #region 专业
+        /// <summary>
+        /// 专业
+        /// </summary>
+        public string Major
+        {
+            get
+            {
+                return _Major;
+            }
+            set
+            {
+                _Major = value;
             }
         }
         #endregion

@@ -475,7 +475,7 @@ namespace CRMDBService
         /// <param name="cCity">客户城市</param>
         /// <param name="cCityLetter">城市首字母</param>
         /// <returns>客户信息</returns>
-        public DataSet GetCustomerInfoBySearchCondition(string cName, string eName, int cImportantce, int cClass, string dataFrom, string cProvince, string cCity, string cIntentionCountry, string ImportingPeople, string GStaffName, string WStaffName, string Cellphone, string BackUpTel,bool IsNonefollow,string StartDate,string EndDate)
+        public DataSet GetCustomerInfoBySearchCondition(string cName, string eName, int cImportantce, int cClass, string dataFrom, string cProvince, string cCity, string cIntentionCountry, string ImportingPeople, string GStaffName, string WStaffName, string Cellphone, string BackUpTel,bool IsNonefollow,string StartDate,string EndDate,string ContractNum,int CustomerImprove)
         {
             string SqlQuery = string.Empty;
             SqlQuery += "select ";
@@ -523,6 +523,9 @@ namespace CRMDBService
             SqlQuery += ",[StaffName]";
             
             SqlQuery += ",[LatestTime]";
+            SqlQuery += ",[ContractNum]";
+            SqlQuery += ",[CustomerImprove]";
+            SqlQuery += ",[WorkExperience]";
       
             SqlQuery += " from";
            
@@ -604,6 +607,14 @@ namespace CRMDBService
             else if (StartDate != "" && EndDate == "")
             {
                 SqlQuery += " and (intentiondate>='" + StartDate + "')";
+            }
+            if (ContractNum != "0")
+            {
+                SqlQuery += " and ContractNum='" + ContractNum + "'";
+            }
+            if (CustomerImprove > 0)
+            {
+                SqlQuery += " and CustomerImprove=" + CustomerImprove;
             }
             DbCommand cmd = dbh.GetSqlStringCommond(SqlQuery);
             return dbh.ExecuteDataSet(cmd);

@@ -789,6 +789,40 @@ namespace CRMWebServer.Customer
         }
         #endregion
 
+        #region 验证合同编号是否合法 VerifyContractNumWhetherTrue()
+        /// <summary>
+        /// 验证合同编号是否合法
+        /// </summary>
+        private int VerifyContractNumWhetherTrue()
+        {
+            if (ckbContractNum.Checked == true && this.txtContractNum.Text.Trim().Length > 0)
+            {
+                CSIF.ContractNum = this.txtContractNum.Text.Trim();
+                return 1;
+            }
+            else
+                return 0;
+        }
+        #endregion
+
+        #region 验证背景提升的选择 VerifyCustomerImproveSelected()
+        /// <summary>
+        /// 验证背景提升的选择
+        /// </summary>
+        private int VerifyCustomerImproveSelected()
+        {
+            if (ckbCustomerImprove.Checked == true && DDCustomerImprove.SelectedIndex >= 0)
+            {
+                CSIF.CustomerImprove = DDCustomerImprove.SelectedIndex;
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        #endregion
+
         /// <summary>
         /// 验证备用手机号码输入是否合法
         /// </summary>
@@ -875,7 +909,19 @@ namespace CRMWebServer.Customer
             {
                 CSIF.BackUpTel = "0";
             }
-            DataSet ds = CSS.GetCustomerInfoBySearchCondition(CSIF.CustomerName, CSIF.EnglishName, CSIF.CustomerImportance, CSIF.CustomerClass, CSIF.FromData, CSIF.CProvince, CSIF.CCity, CIntention.IntentionCountry, CSIF.ImportingPeople, GStaffName, WStaffName, CSIF.Telphone,CSIF.BackUpTel,CB_NoneFollow.Checked,txtStartIntentionTime.Text.Trim(),txtEndIntentionTime.Text.Trim());
+            //判断合同编号是否被传送
+            if (VerifyContractNumWhetherTrue() < 1)
+            {
+                CSIF.ContractNum = "0";
+            }
+            //判断背景提升是否被传送
+            if (VerifyCustomerImproveSelected() < 1)
+            {
+                CSIF.CustomerImprove = -1;
+            }
+
+
+            DataSet ds = CSS.GetCustomerInfoBySearchCondition(CSIF.CustomerName, CSIF.EnglishName, CSIF.CustomerImportance, CSIF.CustomerClass, CSIF.FromData, CSIF.CProvince, CSIF.CCity, CIntention.IntentionCountry, CSIF.ImportingPeople, GStaffName, WStaffName, CSIF.Telphone, CSIF.BackUpTel, CB_NoneFollow.Checked, txtStartIntentionTime.Text.Trim(), txtEndIntentionTime.Text.Trim(), CSIF.ContractNum, CSIF.CustomerImprove);
             if (ds == null || ds.Tables[0].Rows.Count == 0)
             {
                 CVNoticeCustomError.IsValid = false;
@@ -899,7 +945,7 @@ namespace CRMWebServer.Customer
         /// <returns>value</returns>
         private int CheckBoxWhetherCheckedExceptCkID()
         {
-            if (ckbCustomerName.Enabled == true || ckbCustomerEnglishName.Enabled == true || ckbCustomerImportant.Enabled == true || ckbCustomerClass.Enabled == true || ckbDataResource.Enabled == true || ckbCustomerProvince.Enabled == true || ckbCustomerCity.Enabled == true || ckbIntentionCountry.Enabled == true || ckbImportingPeople.Enabled == true || ckbFollowUpConsultant.Enabled == true || ckbFollowUpCopy.Enabled == true || CB_NoneFollow.Enabled==true)//1
+            if (ckbCustomerName.Enabled == true || ckbCustomerEnglishName.Enabled == true || ckbCustomerImportant.Enabled == true || ckbCustomerClass.Enabled == true || ckbDataResource.Enabled == true || ckbCustomerProvince.Enabled == true || ckbCustomerCity.Enabled == true || ckbIntentionCountry.Enabled == true || ckbImportingPeople.Enabled == true || ckbFollowUpConsultant.Enabled == true || ckbFollowUpCopy.Enabled == true || CB_NoneFollow.Enabled==true || ckbContractNum.Enabled==true ||ckbCustomerImprove.Enabled==true)//1
             {
                 return 1;
             }
@@ -1429,6 +1475,34 @@ namespace CRMWebServer.Customer
             {
                 txtEndIntentionTime.Enabled = false;
                 txtEndIntentionTime.Text = "";
+            }
+        }
+
+        protected void ckbContractNum_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbContractNum.Checked == true)
+            {
+                txtContractNum.Enabled = true;
+            }
+            else
+            {
+                txtContractNum.Enabled = false;
+                txtContractNum.Text = "";
+            }
+        }
+
+        protected void ckbCustomerImprove_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbCustomerImprove.Checked == true)
+            {
+                this.DDCustomerImprove.Enabled = true;
+                //DisableCheckedBoxID();
+            }
+            else
+            {
+                this.DDCustomerImprove.SelectedIndex = -1;
+                this.DDCustomerImprove.Enabled = false;
+                //EnableCheckedBoxID();
             }
         }
 

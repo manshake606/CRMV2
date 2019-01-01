@@ -528,7 +528,7 @@ namespace CRMDBService
             CIF.Reference = ds.Tables[0].Rows[0]["Reference"].ToString();
             CIF.ReferenceRemark = ds.Tables[0].Rows[0]["ReferenceRemark"].ToString();
             CIF.ContractNum = ds.Tables[0].Rows[0]["ContractNum"].ToString();
-            CIF.CustomerImprove = int.Parse(ds.Tables[0].Rows[0]["CustomerImprove"].ToString());
+            CIF.CustomerImprove = ds.Tables[0].Rows[0]["CustomerImprove"].ToString()==""?1:int.Parse(ds.Tables[0].Rows[0]["CustomerImprove"].ToString());
             CIF.WorkExperience = ds.Tables[0].Rows[0]["WorkExperience"].ToString();
             return CIF;
         }
@@ -1095,11 +1095,85 @@ namespace CRMDBService
             db.ExecuteNonQuery(cmd);
         }
 
+
+
+
+
+
         public void DeleteLanguageSkillsbyLGID(int LGID)
         {
             DbHelper db = new DbHelper();
             string str = "";
             str += "Delete From LanguageSkills where LanguageSkills.LGID=" + LGID.ToString();
+            DbCommand cmd = db.GetSqlStringCommond(str);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void InsertSchoolRankInfo(SchoolRankInfo SRI)
+        {
+            DbHelper db = new DbHelper();
+            string str = "";
+            str += "INSERT INTO SchoolRankInfo";
+            str += "([CustomerID]";
+            str += " ,[AverageScore]";
+            str += " ,[Ranking]";
+            str += ",[SchoolOtherInfo]";
+            str += ",[Remark]";
+            str += ",[CurrentSchool]";
+            str += ",[Major]";
+            str += ")";
+            str += " VALUES ";
+            str += "(";
+            str += SRI.CustomerID;
+            if (SRI.AverageScore.ToString() == "" || SRI.AverageScore == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + SRI.AverageScore.ToString() + "'";
+            }
+            if (SRI.Ranking.ToString() == "" || SRI.Ranking == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + SRI.Ranking.ToString() + "'";
+            }
+            if (SRI.SchoolOtherInfo == "" || SRI.SchoolOtherInfo == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + SRI.SchoolOtherInfo.ToString() + "'";
+            }
+            if (SRI.Remark == "" || SRI.Remark == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + SRI.Remark.ToString() + "'";
+            }
+            if (SRI.CurrentSchool.ToString() == "" || SRI.CurrentSchool == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + SRI.CurrentSchool.ToString() + "'";
+            }
+            if (SRI.Major.ToString() == "" || SRI.Major == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + SRI.Major.ToString() + "'";
+            }
+            str += ")";
             DbCommand cmd = db.GetSqlStringCommond(str);
             db.ExecuteNonQuery(cmd);
         }
@@ -1112,11 +1186,13 @@ namespace CRMDBService
             str += "[AverageScore],";
             str += "[CustomerID],";
             str += "[Ranking],";
-            str += "[SchoolOtherInfo]";
+            str += "[SchoolOtherInfo],";
+            str += "[CurrentSchool],";
+            str += "[Major]";
             str += " FROM ";
-            str += " CustomerInfo ";
+            str += " SchoolRankInfo ";
             str += " WHERE ";
-            str += " CustomerInfo.CustomerID=" + CustomerID.ToString();
+            str += " SchoolRankInfo.CustomerID=" + CustomerID.ToString();
             DbCommand cmd = db.GetSqlStringCommond(str);
             DataSet ds = db.ExecuteDataSet(cmd);
             db.ExecuteNonQuery(cmd);
@@ -1127,13 +1203,13 @@ namespace CRMDBService
         {
             DbHelper db = new DbHelper();
             string str = "";
-            str += "Update CustomerInfo set";
+            str += "Update SchoolRankInfo set";
             str += " [AverageScore]='" + AverageScore + "',";
             str += " [Ranking]='" + Ranking + "',";
             str += " [SchoolOtherInfo]='" + SchoolOtherInfo + "',";
             str += " [Major]='" + Major + "',";
             str += " [CurrentSchool]='" + CurrentSchool + "'";
-            str += " where CustomerInfo.CustomerID=" + CustomerID;
+            str += " where SchoolRankInfo.CustomerID=" + CustomerID;
             DbCommand cmd = db.GetSqlStringCommond(str);
             db.ExecuteNonQuery(cmd);
         }
@@ -1142,13 +1218,13 @@ namespace CRMDBService
         {
             DbHelper db = new DbHelper();
             string str = "";
-            str += "Update CustomerInfo set";
+            str += "Update SchoolRankInfo set";
             str += " [AverageScore]='',";
             str += " [Ranking]='',";
             str += " [CurrentSchool]='',";
             str += " [Major]='',";
             str += " [SchoolOtherInfo]=''";
-            str += " where CustomerInfo.CustomerID=" + CustomerID;
+            str += " where SchoolRankInfo.CustomerID=" + CustomerID;
             DbCommand cmd = db.GetSqlStringCommond(str);
             db.ExecuteNonQuery(cmd);
         }

@@ -486,6 +486,21 @@ namespace CRMControlService
             return DS;
         }
 
+        public int InsertSchoolRankInfo_Service(SchoolRankInfo SRI)
+        {
+            int Pass = 0;
+            try
+            {
+                MCDB.InsertSchoolRankInfo(SRI);
+            }
+            catch
+            {
+                Pass = 1;
+            }
+            return Pass;
+        }
+
+
         public int UpdateSchoolInfo_Service(string AverageScore, string Ranking, string SchoolOtherInfo, string CustomerID, string CurrentSchool, string Major)
         {
             int Pass = 0;

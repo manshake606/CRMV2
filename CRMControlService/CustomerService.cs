@@ -115,9 +115,9 @@ namespace CRMControlService
         /// <param name="cCity">客户城市</param>
         /// <param name="cCityLetter">城市首字母</param>
         /// <returns>客户信息</returns>
-        public DataSet GetCustomerInfoBySearchCondition(string cName, string eName, int cImportantce, int cClass, string dataFrom, string cProvince, string cCity, string cIntentionCountry, string ImportingPeople, string GStaffName, string WStaffName, string Cellphone, string BackUpTel,bool isNonefollow,string StartDate,string EndDate)
+        public DataSet GetCustomerInfoBySearchCondition(string cName, string eName, int cImportantce, int cClass, string dataFrom, string cProvince, string cCity, string cIntentionCountry, string ImportingPeople, string GStaffName, string WStaffName, string Cellphone, string BackUpTel,bool isNonefollow,string StartDate,string EndDate,string ContractNum,int CustomerImprove)
         {
-            ds = CDB.GetCustomerInfoBySearchCondition(cName, eName, cImportantce, cClass, dataFrom, cProvince, cCity, cIntentionCountry, ImportingPeople, GStaffName, WStaffName, Cellphone, BackUpTel,isNonefollow,StartDate,EndDate);
+            ds = CDB.GetCustomerInfoBySearchCondition(cName, eName, cImportantce, cClass, dataFrom, cProvince, cCity, cIntentionCountry, ImportingPeople, GStaffName, WStaffName, Cellphone, BackUpTel, isNonefollow, StartDate, EndDate, ContractNum, CustomerImprove);
             return ds;
         }
         #endregion
