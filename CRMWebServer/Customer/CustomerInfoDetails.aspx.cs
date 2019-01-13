@@ -729,8 +729,11 @@ namespace CRMWebServer.Customer
             IT.IntentionSchool = txtIntentionSchool.Text.Trim();
             IT.IntentionPhase = int.Parse(DDLIntentionPhase.SelectedItem.Value);
             IT.BetterWantpriTo = int.Parse(DDLBetterWantTo.SelectedItem.Value);
-            IT.Intentiondate = DateTime.Parse(txtIntentiondate.Text.Trim());
-            IT.Remark = txtRemark.Text.Trim();
+            if (txtIntentiondate.Text.Trim() != null && txtIntentiondate.Text.Trim() != "")
+            {
+                IT.Intentiondate = DateTime.Parse(txtIntentiondate.Text.Trim());
+            }
+            IT.Remark = txtIntentionRemark.Text.Trim();
         }
 
         protected void LoadLanguageSkillsbytxt()
@@ -1014,6 +1017,18 @@ namespace CRMWebServer.Customer
         protected void btnStudiesUpdate_Click(object sender, EventArgs e)
         {
             DataSet SRI = MCS.GetSchoolInfobyCustomerID_Service(CSIF.CustomerID);
+            double result;
+            if (!double.TryParse(txtAverageScore.Text.Trim(), out result))
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('学校平均成绩输入有误!')</script>", false);
+                return;
+            }
+            int rankResult;
+            if (!int.TryParse(txtSchoolRankings.Text.Trim(), out rankResult))
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel3, this.GetType(), "myscript", "<script>alert('学校排名输入有误!')</script>", false);
+                return;
+            }
             if (SRI.Tables[0].Rows.Count < 1)
             {
                 SchoolRankInfo NSRI = new SchoolRankInfo();
