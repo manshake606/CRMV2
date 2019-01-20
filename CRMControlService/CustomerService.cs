@@ -86,6 +86,13 @@ namespace CRMControlService
             return ds;
         }
 
+        public DataSet GetCustomerNamebyCustomerIDOrName_Service(int CustomerID,string CustomerName)
+        {
+            ds = CDB.GetCustomerNamebyCustomerIDOrName(CustomerID, CustomerName);
+            return ds;
+        }
+
+
 
         #region 根据客户ID搜索客户信息
         /// <summary>

@@ -64,6 +64,7 @@
     <Content Include="Document\DocumentList.aspx" />
     <Content Include="Document\SearchDocument.aspx" />
     <Content Include="Document\UploadDocument.aspx" />
+    <Content Include="Document\UploadFile.aspx" />
     <Content Include="Error\404.aspx" />
     <Content Include="FinancialPage\ContractIncome.aspx" />
     <Content Include="FinancialPage\Payment.aspx" />
@@ -284,6 +285,13 @@
     </Compile>
     <Compile Include="Document\UploadDocument.aspx.designer.cs">
       <DependentUpon>UploadDocument.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Document\UploadFile.aspx.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Document\UploadFile.aspx.designer.cs">
+      <DependentUpon>UploadFile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
@@ -517,7 +525,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>12458</DevelopmentServerPort>
+          <DevelopmentServerPort>6452</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -48,6 +48,31 @@ namespace CRMDBService
             DataSet ds = db.ExecuteDataSet(cmd);
             return ds;
         }
+
+        public DataSet GetCustomerNamebyCustomerIDOrName(int CustomerID,string CustomerName)
+        {
+            DbHelper db = new DbHelper();
+            string str = "";
+            str += "select ";
+            str += "CustomerInfo.CustomerID";
+            str += ",";
+            str += "CustomerInfo.CustomerName";
+            str += " from";
+            str += " CustomerInfo";
+            str += " where";
+            str += " 1=1";
+            if (CustomerID != 0)
+            {
+                str += " and CustomerID='" + CustomerID + "'";
+            }
+            if (CustomerName != "")
+            {
+                str += " and CustomerName like '%" + CustomerName + "%'";
+            }
+            DbCommand cmd = db.GetSqlStringCommond(str);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            return ds;
+        }
         #region 获取客户基本信息无参
         /// <summary>
         /// 获取客户基本信息无参

@@ -213,6 +213,7 @@
                         </table>
                         <ul class="MM">
                             <li><a href="Document/SearchDocument.aspx" target="main">文案搜索</a></li>
+                             <li><a href="Document/UploadFile.aspx" target="main">文案上传</a></li>
                         </ul>
                     </div>
                     <h1 class="type">
