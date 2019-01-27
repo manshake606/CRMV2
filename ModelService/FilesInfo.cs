@@ -62,38 +62,38 @@ namespace ModelService
         }
         #endregion
 
-        private DateTime _FileUploadDate;
-        #region 文件上传日期
+        private DateTime _FileUploadTime;
+        #region 文件上传时间
         /// <summary>
         /// 文件上传日期
         /// </summary>
-        public DateTime FileUploadDate
+        public DateTime FileUploadTime
         {
             get
             {
-                return _FileUploadDate;
+                return _FileUploadTime;
             }
             set
             {
-                _FileUploadDate = value;
+                _FileUploadTime = value;
             }
         }
         #endregion
 
-        private int _CustomerID;
+        private int _Customer;
         #region 用户ID
         /// <summary>
         /// 用户ID
         /// </summary>
-        public int CustomerID
+        public int Customer
         {
             get
             {
-                return _CustomerID;
+                return _Customer;
             }
             set
             {
-                _CustomerID = value;
+                _Customer = value;
             }
         }
         #endregion

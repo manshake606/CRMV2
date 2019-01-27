@@ -202,7 +202,7 @@
                         </ul>
                     </div>
                     <h1 class="type">
-                        <a href="javascript:void(0)">文案归档管理</a></h1>
+                        <a href="javascript:void(0)">文档上传管理</a></h1>
                     <div class="content">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
@@ -212,8 +212,8 @@
                             </tr>
                         </table>
                         <ul class="MM">
-                            <li><a href="Document/SearchDocument.aspx" target="main">文案搜索</a></li>
-                             <li><a href="Document/UploadFile.aspx" target="main">文案上传</a></li>
+                            <li><a href="Document/SearchDocument.aspx" target="main">文档搜索</a></li>
+                             <li><a href="Document/UploadFile.aspx" target="main">文档上传</a></li>
                         </ul>
                     </div>
                     <h1 class="type">

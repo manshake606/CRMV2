@@ -125,7 +125,7 @@ namespace CRMWebServer.Document
             {
                 if (File.Exists(filePath + @"\" + filesInfo.FolderID + @"\" + e.CommandArgument.ToString()))
                 {
-                    DocInfoSv.RemoveFileInfo_Service(e.CommandArgument.ToString());
+                    DocInfoSv.RemoveFileInfo_Service(filesInfo.FileID);
                     File.Delete(filePath + @"\" + filesInfo.FolderID + @"\" + e.CommandArgument.ToString());
 
                     DataSet ds = DocInfoSv.GetFileInfo_Service(filesInfo.FolderID);

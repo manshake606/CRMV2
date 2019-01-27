@@ -39,19 +39,25 @@ namespace CRMDBService
         }
 
         //插入上传文件信息
-        public void InsertFileInfo(string FileName, string FolderID, int CustomerID)
+        public void InsertFileInfo(string FileName, string FolderID, int CustomerID, int FileType, int UploadedBy)
         {
             string sqlstr = "";
-            sqlstr += "Insert into FileInfo(FilesName,FolderID,FileUploadDate,CustomerID) ";
+            sqlstr += "Insert into FileInfo(FilesName,FolderID,FileUploadTime,Customer,FileType,UploadedBy,Status) ";
             sqlstr += " values ";
             sqlstr += "(";
             sqlstr += "'" + FileName + "'";
             sqlstr += ",";
             sqlstr += "'" + FolderID + "'";
             sqlstr += ",";
-            sqlstr += "'" + DateTime.Today + "'";
+            sqlstr += "'" + DateTime.Now + "'";
             sqlstr += ",";
             sqlstr += "'" + CustomerID + "'";
+            sqlstr += ",";
+            sqlstr += "'" + FileType + "'";
+            sqlstr += ",";
+            sqlstr += "'" + UploadedBy + "'";
+            sqlstr += ",";
+            sqlstr += "'1'";
             sqlstr += ")";
             DbCommand cmd = db.GetSqlStringCommond(sqlstr);
             db.ExecuteNonQuery(cmd);
@@ -65,7 +71,7 @@ namespace CRMDBService
             sqlstr += "select ";
             sqlstr += " FileInfo.FilesName";
             sqlstr += " ,";
-            sqlstr += " FileInfo.FileUploadDate";
+            sqlstr += " FileInfo.FileUploadTime";
             sqlstr += " from ";
             sqlstr += " FileInfo ";
             sqlstr += " where FolderID='" + FolderID + "'";
@@ -74,6 +80,76 @@ namespace CRMDBService
             db.ExecuteNonQuery(cmd);
             return ds;
         }
+
+        //根据客户ID获取已上传的文件信息
+        public DataSet GetFileInfoByCustomerID(int CustomerID)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "select ";
+            sqlstr += " FileInfo.FileID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FilesName";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FolderID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileUploadTime";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Customer";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileType";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.UploadedBy";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Status";
+            sqlstr += " ,";
+            sqlstr += " CustomerInfo.CustomerName";
+            sqlstr += " ,";
+            sqlstr += " StaffInfo.StaffName";
+            sqlstr += " ,";
+            sqlstr += " FileType.DoccumentTypeName";
+            sqlstr += " from ";
+            sqlstr += " FileInfo ";
+            sqlstr += " Inner join CustomerInfo on CustomerInfo.CustomerID =FileInfo.Customer";
+            sqlstr += " Inner join StaffInfo on StaffInfo.StaffID =FileInfo.UploadedBy";
+            sqlstr += " Inner join FileType on FileType.Id =FileInfo.FileType";
+            sqlstr += " where FileInfo.Customer='" + CustomerID + "'";
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            db.ExecuteNonQuery(cmd);
+            return ds;
+        }
+
+        //根据客户ID获取已上传的文件信息
+        public DataSet GetFileInfoByFileID(int FileID)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "select ";
+            sqlstr += " FileInfo.FileID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FilesName";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FolderID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileUploadTime";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Customer";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileType";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.UploadedBy";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Status";
+            sqlstr += " from ";
+            sqlstr += " FileInfo ";
+            sqlstr += " where FileInfo.FileID='" + FileID + "'";
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            db.ExecuteNonQuery(cmd);
+            return ds;
+        }
+
 
         //判断文件是否已经上传
         public int IsFileExistInfo(string FileName, string FolderID)
@@ -99,12 +175,12 @@ namespace CRMDBService
         }
 
         //删除已上传文件信息
-        public void RemoveFileInfo(string FileName)
+        public void RemoveFileInfo(string FileID)
         {
             string sqlstr = "";
             sqlstr += "Delete";
             sqlstr += " FileInfo ";
-            sqlstr += " where FilesName='" + FileName + "'";
+            sqlstr += " where FileID='" + FileID + "'";
             DbCommand cmd = db.GetSqlStringCommond(sqlstr);
             db.ExecuteNonQuery(cmd);
         }

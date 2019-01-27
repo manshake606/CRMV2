@@ -16,9 +16,9 @@ namespace CRMControlService
         CRMDBService.DocumentInfoDB CDB = new DocumentInfoDB();
 
         //插入文件信息
-        public void InsertFileInfo_Service(string FileName, string FolderID, int CustomerID)
+        public void InsertFileInfo_Service(string FileName, string FolderID, int CustomerID, int FileType, int UploadedBy)
         {
-            CDB.InsertFileInfo(FileName, FolderID,CustomerID);
+            CDB.InsertFileInfo(FileName, FolderID, CustomerID, FileType, UploadedBy);
         }
 
         public DataSet GetFileInfo_Service(string FolderID)
@@ -26,10 +26,20 @@ namespace CRMControlService
             return CDB.GetFileInfo(FolderID);
         }
 
-        //删除文件
-        public void RemoveFileInfo_Service(string FileName)
+        public DataSet GetFileInfoByCustomerID_Service(int CustomerID)
         {
-            CDB.RemoveFileInfo(FileName);
+            return CDB.GetFileInfoByCustomerID(CustomerID);
+        }
+
+        public DataSet GetFileInfoByFileID_Service(int FileID)
+        {
+            return CDB.GetFileInfoByFileID(FileID);
+        }
+
+        //删除文件
+        public void RemoveFileInfo_Service(string FileID)
+        {
+            CDB.RemoveFileInfo(FileID);
         }
 
         public int IsFIDExistData(string FolderID)

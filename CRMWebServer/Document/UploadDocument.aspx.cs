@@ -197,7 +197,7 @@ namespace CRMWebServer
         {
             try
             {
-                DataSet ds = DocInfoSv.GetFileInfo_Service(filesInfo.FolderID);
+                DataSet ds = DocInfoSv.GetFileInfoByCustomerID_Service(filesInfo.Customer);
                 gdvUploadFile.DataSource = ds;
                 gdvUploadFile.DataBind();
             }
@@ -215,7 +215,7 @@ namespace CRMWebServer
                 //确认文件夹信息是否存在数据库，不存在则插入
                 if (DocInfoSv.IsFileExistData(filesInfo.FileName, filesInfo.FolderID) == 0)
                 {
-                    DocInfoSv.InsertFileInfo_Service(filesInfo.FileName, filesInfo.FolderID, int.Parse(CustomerID));
+                    DocInfoSv.InsertFileInfo_Service(filesInfo.FileName, filesInfo.FolderID, int.Parse(CustomerID), filesInfo.FileType,filesInfo.UploadedBy);
                 }
             }
             catch (Exception exp)
@@ -249,17 +249,20 @@ namespace CRMWebServer
 
         protected void gdvUploadFile_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            DataSet ds = DocInfoSv.GetFileInfoByFileID_Service(int.Parse(e.CommandArgument.ToString()));
             if (e.CommandName == "download")
             {
-                DownloadFile(e.CommandArgument.ToString());
+
+                DownloadFile(ds.Tables[0].Rows[0]["FilesName"].ToString());
 
             }
             if (e.CommandName == "Remove")
             {
-                if (File.Exists(filePath + @"\" + filesInfo.FolderID + @"\" + e.CommandArgument.ToString()))
+
+                if (File.Exists(filePath + @"\" + ds.Tables[0].Rows[0]["FolderID"].ToString() + @"\" + ds.Tables[0].Rows[0]["FilesName"].ToString()))
                 {
                     DocInfoSv.RemoveFileInfo_Service(e.CommandArgument.ToString());
-                    File.Delete(filePath + @"\" + filesInfo.FolderID + @"\" + e.CommandArgument.ToString());
+                    File.Delete(filePath + @"\" + ds.Tables[0].Rows[0]["FolderID"].ToString() + @"\" + ds.Tables[0].Rows[0]["FilesName"].ToString());
                     BindGridView();
                 }
             }
