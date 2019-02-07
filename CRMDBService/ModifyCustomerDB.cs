@@ -322,9 +322,9 @@ namespace CRMDBService
             str += "[CustomerFrom]='" + CIF.CustomerFrom + "',";
             str += "[FromData]='" + CIF.FromData + "',";
             str += "[Reference]='" + CIF.Reference + "',";
-            str += "[ReferenceRemark]='" + CIF.ReferenceRemark + "'";
-            str += "[ContractNum]='" + CIF.ContractNum + "'";
-            str += "[CustomerImprove]='" + CIF.CustomerImprove + "'";
+            str += "[ReferenceRemark]='" + CIF.ReferenceRemark + "',";
+            str += "[ContractNum]='" + CIF.ContractNum + "',";
+            str += "[CustomerImprove]='" + CIF.CustomerImprove + "',";
             str += "[WorkExperience]='" + CIF.WorkExperience + "'";
             str += " From CustomerInfo";
             str += " where ";
@@ -602,6 +602,9 @@ namespace CRMDBService
             str +=",[BetterWantTo]";
             str +=",[Remark]";
             str +=",[Intentiondate]";
+            str +=",[ApplyStatus]";
+            str +=",[ApplyEndDate]";
+            str +=",[FileID]";
             str +=",[IntentionPhase])";
             str +=" VALUES";
             str += "(";
@@ -655,9 +658,45 @@ namespace CRMDBService
             {
                 str += ",'" + IT.Intentiondate.ToString() + "'";
             }
+            if (IT.ApplyStatus.ToString() == "" || IT.ApplyStatus == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + IT.ApplyStatus.ToString() + "'";
+            }
+            if (IT.ApplyEndDate.ToString() == "" || IT.ApplyEndDate == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + IT.ApplyEndDate.ToString() + "'";
+            }
+            if (IT.FileID.ToString() == "0" || IT.FileID == null)
+            {
+                str += ",NULL";
+            }
+            else
+            {
+                str += ",'" + IT.FileID.ToString() + "'";
+            }
             str += "," + IT.IntentionPhase.ToString();
             str += ")";
             DbCommand cmd = db.GetSqlStringCommond(str);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void DeleteFileInfoRelationbyFileID(int FileID)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "Update ";
+            sqlstr += " Intention set";
+            sqlstr += " FileID=NULL";
+            sqlstr += " where Intention.FileID='" + FileID + "'";
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
             db.ExecuteNonQuery(cmd);
         }
 
@@ -869,7 +908,10 @@ namespace CRMDBService
             str += " [BetterWantTo]=" + IT.BetterWantpriTo.ToString() + ",";
             str += " [Remark]='" + IT.Remark + "',";
             str += " [IntentionPhase]=" + IT.IntentionPhase + ",";
-            str += "[Intentiondate]='" + IT.Intentiondate + "'";
+            str += "[Intentiondate]='" + IT.Intentiondate + "',";
+            str += "[ApplyStatus]=" + IT.ApplyStatus + ",";
+            str += "[ApplyEndDate]='" + IT.ApplyEndDate + "',";
+            str += "[FileID]='" + IT.FileID + "'";
             str += " where Intention.ITTID=" + IT.ITTID;
             DbCommand cmd = db.GetSqlStringCommond(str);
             db.ExecuteNonQuery(cmd);
@@ -898,7 +940,10 @@ namespace CRMDBService
             str +="[BetterWantTo],";
             str +="[Remark],";
             str +="[IntentionPhase],";
-            str +="[Intentiondate]";
+            str +="[Intentiondate],";
+            str +="[ApplyStatus],";
+            str +="[ApplyEndDate],";
+            str +="[FileID]";
             str +=" FROM ";
             str +=" Intention ";
             str +=" WHERE ";

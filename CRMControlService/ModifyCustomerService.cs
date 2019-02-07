@@ -422,6 +422,20 @@ namespace CRMControlService
             return Pass;
         }
 
+        public int DeleteFileInfoRelationbyFileID_Service(int FileID)
+        {
+            int Pass = 0;
+            try
+            {
+                MCDB.DeleteFileInfoRelationbyFileID(FileID);
+            }
+            catch
+            {
+                Pass = 1;
+            }
+            return Pass;
+        }
+
         public int UpdateLanguageSkills_Service(LanguageSkills LS)
         {
             int Pass = 0;

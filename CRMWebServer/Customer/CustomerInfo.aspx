@@ -352,13 +352,25 @@
                                                             <td width="15%" bgcolor="#f2f2f2">
                                                                 
                                                                 <asp:DropDownList ID="DDCustomerImprove" runat="server" Enabled="False">
+                                                                    <asp:ListItem Value="0">是</asp:ListItem>
+                                                                    <asp:ListItem Value="1">否</asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </td>
                                                             <td width="6%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">
-                                                                &nbsp;</td>
+                                                                <asp:CheckBox ID="ckbBackupTel" runat="server" AutoPostBack="True" 
+                                                                    oncheckedchanged="ckbBackupTel_CheckedChanged" Text="备用手机号：" />
+                                                            </td>
                                                             <td bgcolor="#f2f2f2" class="style5">
        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtFollowUpCopy"  ErrorMessage="只能为字母" CssClass="left_txt" ValidationExpression="^[a-zA-Z]{1,12}$">
        </asp:RegularExpressionValidator> --%>
+                                                                <asp:TextBox ID="txtBackupTel" runat="server" Enabled="false"></asp:TextBox>
+                                                                <asp:RegularExpressionValidator ID="REVBackTel2" runat="server" 
+                                                                    ControlToValidate="txtBackupTel" CssClass="left_txt" Display="Dynamic" 
+                                                                    ErrorMessage="备用手机格式不正确" ValidationExpression="^1[3|4|5|8][0-9]\d{4,8}$" 
+                                                                    ValidationGroup="A1"></asp:RegularExpressionValidator>
+                                                                <asp:RequiredFieldValidator ID="REVBackTelphone2" runat="server" 
+                                                                    ControlToValidate="txtBackupTel" CssClass="left_txt" Display="Dynamic" 
+                                                                    ErrorMessage="手机号不能为空" ValidationGroup="A1"></asp:RequiredFieldValidator>
                                                             </td>
                                                         </tr> 
                                                         
@@ -382,50 +394,40 @@
                                          
                                                             <td width="15%" bgcolor="#f2f2f2" align="right" class="style6">
                                                                 &nbsp;
-                                                                <asp:CheckBox ID="ckbBackupTel" runat="server" Text="备用手机号：" 
-                                                                    AutoPostBack="True" oncheckedchanged="ckbBackupTel_CheckedChanged" />
-                                                            </td>
+                                                                </td>
                                                             
-                                                            <td width="8%" align="right" bgcolor="#f2f2f2" class="style6">
-                                                                <asp:TextBox ID="txtBackupTel" runat="server" Enabled="false"></asp:TextBox>
+                                                            <td width="8%" align="left" bgcolor="#f2f2f2" class="style6">
+                                                                <asp:CheckBox ID="CB_NoneFollow" runat="server" AutoPostBack="True" 
+                                                                    oncheckedchanged="ckbCellPhoneNumber_CheckedChanged" Text="选择从未跟进客户" />
                                                             </td>
                                                             <td bgcolor="#f2f2f2" class="style7">
                                                              &nbsp;
-                                                                <asp:RegularExpressionValidator ID="REVBackTel1" runat="server" 
-                                                                    ControlToValidate="txtBackupTel" CssClass="left_txt" Display="Dynamic" 
-                                                                    ErrorMessage="备用手机格式不正确" ValidationExpression="^1[3|4|5|8][0-9]\d{4,8}$" 
-                                                                    ValidationGroup="A1"></asp:RegularExpressionValidator>
-                                                                <asp:RequiredFieldValidator ID="REVBackTelphone1" runat="server" 
-                                                                    ControlToValidate="txtBackupTel" CssClass="left_txt" Display="Dynamic" 
-                                                                    ErrorMessage="手机号不能为空" ValidationGroup="A1"></asp:RequiredFieldValidator>
-                                                            </td>
+                                                                </td>
                                                         </tr>       
                                                         <tr>
                                                             <td width="8%" align="left" bgcolor="#f2f2f2" class="style6">
-                                                                <asp:CheckBox ID="CB_NoneFollow" runat="server" Text="选择从未跟进客户" 
-                                                                    AutoPostBack="True" oncheckedchanged="ckbCellPhoneNumber_CheckedChanged" />
+                                                                <asp:CheckBox ID="ckbStartIntentionTime" runat="server" AutoPostBack="True" 
+                                                                    class="left_txt2" oncheckedchanged="ckbStartIntentionTime_CheckedChanged" 
+                                                                    Text="预计出国时间始" />
                                                             </td>
                                                             <td bgcolor="#f2f2f2" colspan="2" class="style7">
-                                                                                                                                <asp:CheckBox ID="ckbStartIntentionTime" runat="server" AutoPostBack="True" 
-                                                                                                                                    oncheckedchanged="ckbStartIntentionTime_CheckedChanged" Text="预计出国时间始" 
-                                                                                                                                    class="left_txt2"/>
                                                                                                                                 <asp:TextBox ID="txtStartIntentionTime" runat="server" 
                                                                                                                                     onclick="new Calendar().show(this);" Enabled="False"></asp:TextBox>
                                                             </td>
                                          
                                                             <td width="15%" bgcolor="#f2f2f2" align="right" class="style6">
-                                                                <asp:CheckBox ID="ckbEndIntentionTime" runat="server" AutoPostBack="True" 
-                                                                    class="left_txt2" oncheckedchanged="ckbEndIntentionTime_CheckedChanged" 
-                                                                    Text="预计出国时间尾" />
                                                                 &nbsp;
                                                                 </td>
                                                             
-                                                            <td width="8%" align="right" bgcolor="#f2f2f2" class="style6">
-                                                                <asp:TextBox ID="txtEndIntentionTime" runat="server" 
-                                                                    onclick="new Calendar().show(this);" Enabled="False"></asp:TextBox>
+                                                            <td width="8%" align="left" bgcolor="#f2f2f2" class="style6">
+                                                                <asp:CheckBox ID="ckbEndIntentionTime" runat="server" AutoPostBack="True" 
+                                                                    class="left_txt2" oncheckedchanged="ckbEndIntentionTime_CheckedChanged" 
+                                                                    Text="预计出国时间尾" />
                                                             </td>
                                                             <td bgcolor="#f2f2f2" class="style7">
                                                              &nbsp;
+                                                                <asp:TextBox ID="txtEndIntentionTime" runat="server" Enabled="False" 
+                                                                    onclick="new Calendar().show(this);"></asp:TextBox>
                                                                 </td>
                                                         </tr>                                
                                                         <tr>
@@ -438,7 +440,7 @@
                                             </asp:UpdatePanel> 
                                             <div style="margin-top: -10px; margin-right: 30px; margin-bottom: 6px;" align="right">
                                                 <asp:Button ID="btnSearch" runat="server" Text="搜索" OnClick="btnSearch_Click" 
-                                                    style="height: 26px" />&nbsp;</div>
+                                                    style="height: 26px" Height="26px" />&nbsp;</div>
                                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td colspan="3">

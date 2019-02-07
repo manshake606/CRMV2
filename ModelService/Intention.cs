@@ -184,5 +184,53 @@ namespace ModelService
                 _Intentiondate = value;
             }
         }
+
+        private int _ApplyStatus;
+        /// <summary>
+        /// 申请状态
+        /// </summary>
+        public int ApplyStatus
+        {
+            get
+            {
+                return _ApplyStatus;
+            }
+            set
+            {
+                _ApplyStatus = value;
+            }
+        }
+
+        private DateTime _ApplyEndDate;
+        /// <summary>
+        /// 申请截止日期
+        /// </summary>
+        public DateTime ApplyEndDate
+        {
+            get
+            {
+                return _ApplyEndDate;
+            }
+            set
+            {
+                _ApplyEndDate = value;
+            }
+        }
+
+        private int _FileID;
+        /// <summary>
+        /// 选校报告ID
+        /// </summary>
+        public int FileID
+        {
+            get
+            {
+                return _FileID;
+            }
+            set
+            {
+                _FileID = value;
+            }
+        }
     }
 }

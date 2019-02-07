@@ -315,8 +315,8 @@ namespace CRMWebServer.Customer
                         //rowsCount = 0;
                         if (rowsCount < TB.Rows.Count)
                         {
-                            resultID = TB.Rows[rowsCount]["CityInitial"].ToString().ToUpper();
-                            resultID += customerID.ToString().PadLeft(8, '0');
+                            resultID = "";
+                            resultID += customerID.ToString();
                             e.Row.Cells[0].Text = resultID;
                             rowsCount++;
                         }
@@ -557,7 +557,7 @@ namespace CRMWebServer.Customer
                 CVCustomerID.ErrorMessage = "编号输入错误";
                 return;
             }
-            string CustomerID = strtxt.Substring(strtxt.Length - 8, 8);
+            string CustomerID = strtxt;
             int CSID = 0;
             try
             {

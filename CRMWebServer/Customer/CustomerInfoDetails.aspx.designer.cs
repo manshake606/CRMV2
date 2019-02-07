@@ -698,6 +698,15 @@ namespace CRMWebServer.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtIntentiondate;
         
         /// <summary>
+        /// DDLApplyStatus 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLApplyStatus;
+        
+        /// <summary>
         /// DDLIntentionPhase 控件。
         /// </summary>
         /// <remarks>
@@ -714,6 +723,24 @@ namespace CRMWebServer.Customer {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DDLBetterWantTo;
+        
+        /// <summary>
+        /// txtApplyEndDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApplyEndDate;
+        
+        /// <summary>
+        /// DDLIntentionSchoolFile 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DDLIntentionSchoolFile;
         
         /// <summary>
         /// txtIntentionRemark 控件。

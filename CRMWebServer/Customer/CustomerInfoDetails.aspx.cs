@@ -41,11 +41,12 @@ namespace CRMWebServer.Customer
         ModelService.LanguageSkills LS = new ModelService.LanguageSkills();
         ModelService.SchoolRankInfo SRI = new ModelService.SchoolRankInfo();
         ModelService.FamilyInfo FI = new ModelService.FamilyInfo();
+        ModelService.FilesInfo Files = new ModelService.FilesInfo();
         CRMControlService.CustomerService CServer = new CustomerService();
         ContactState CS = new ContactState();
         CRMControlService.ContactStateService css = new ContactStateService();
         StaffInfo staffInfo = new StaffInfo();
-        
+        CRMControlService.DocumentInfoService DI = new DocumentInfoService();
         string moduleID = ConfigurationManager.AppSettings["CustomerInfo"];
         int authority = 0;
         CRMControlService.AuthorityService AS = new AuthorityService();
@@ -316,8 +317,8 @@ namespace CRMWebServer.Customer
             {
 
                 //BindDataToDropDownList();
-                txtCustomerID.Text = CSIF.CityInitial + CSIF.CustomerID.ToString().Trim().PadLeft(8, '0');
-                txtCSTMID.Text = CSIF.CityInitial + CSIF.CustomerID.ToString().Trim().PadLeft(8, '0');
+                txtCustomerID.Text =CSIF.CustomerID.ToString().Trim();
+                txtCSTMID.Text = CSIF.CustomerID.ToString().Trim();
                 txtCSTMName.Text = CSIF.CustomerName;
                 BindCustomer();
 
@@ -359,6 +360,18 @@ namespace CRMWebServer.Customer
                 ViewState["SortOrders"] = "BetterWantTo";
                 ViewState["OrderDires"] = "ASC";
                 BindIntention();
+
+                DataSet dsSchoolFile = DI.GetFileInfoByCustomerID_Service(CSIF.CustomerID);
+                DataTable dtSchoolFile = new DataTable();
+                dtSchoolFile = dsSchoolFile.Tables[0];
+                DDLIntentionSchoolFile.Items.Clear();
+                DDLIntentionSchoolFile.DataSource = dtSchoolFile;
+                DDLIntentionSchoolFile.DataTextField = "FilesName";
+                DDLIntentionSchoolFile.DataValueField = "FileID";
+                DDLIntentionSchoolFile.DataBind();
+
+                
+                DDLIntentionSchoolFile.Items.Insert(0, new ListItem("无选校报告", "-1"));
                 
 
                 //加载语言技能talbe
@@ -413,7 +426,7 @@ namespace CRMWebServer.Customer
         public void LoadCustomer()
         {
             string strtxt = txtCustomerID.Text.Trim();
-            CSIF.CustomerID = int.Parse(strtxt.Substring(strtxt.Length - 8, 8));
+            CSIF.CustomerID = int.Parse(strtxt);
             CSIF.CustomerName = txtCustomerNmae.Text.Trim();
             CSIF.EnglishName = txtCustomerEnglishName.Text.Trim();
             if (txtCustomerBirsthday.Text == "")
@@ -480,7 +493,10 @@ namespace CRMWebServer.Customer
             CSIF.ReferenceRemark = txtRecommendRemark.Text.Trim();
             CSIF.ImportingPeople = txtImportingPeople.Text.Trim();
             CSIF.ImportingDate = Convert.ToDateTime(txtImportingTime.Text.Trim());
+            CSIF.CustomerImprove = int.Parse(ddlCustomerImprove.SelectedValue);
             CSIF.Remark = txtRemark.Text.Trim();
+            CSIF.WorkExperience = txtWorkExperience.Text.Trim();
+            CSIF.ContractNum = txtContractNum.Text.Trim();
         }
 
         public void BindIntention()
@@ -591,6 +607,7 @@ namespace CRMWebServer.Customer
             txtImportingPeople.Text = CSIF.ImportingPeople;
             txtImportingTime.Text = CSIF.ImportingDate.ToString();
             txtRemark.Text = CSIF.Remark;
+            ddlCustomerImprove.SelectedIndex = CSIF.CustomerImprove;
             txtContractNum.Text = CSIF.ContractNum;
             if (CSIF.CustomerImprove == 0)
             {
@@ -733,6 +750,15 @@ namespace CRMWebServer.Customer
             {
                 IT.Intentiondate = DateTime.Parse(txtIntentiondate.Text.Trim());
             }
+            IT.ApplyStatus = DDLApplyStatus.SelectedIndex;
+            if (txtApplyEndDate.Text.Trim() != null && txtApplyEndDate.Text.Trim() != "")
+            {
+                IT.ApplyEndDate = DateTime.Parse(txtApplyEndDate.Text.Trim());
+            }
+            if (int.Parse(DDLIntentionSchoolFile.SelectedItem.Value) != -1)
+            {
+                IT.FileID = int.Parse(DDLIntentionSchoolFile.SelectedItem.Value);
+            }
             IT.Remark = txtIntentionRemark.Text.Trim();
         }
 
@@ -837,6 +863,21 @@ namespace CRMWebServer.Customer
                     HiddenField hidPhase = (HiddenField)e.Row.FindControl("HidIntentionPhase");
                     DropDownList drPa = (DropDownList)e.Row.FindControl("DDLIntentionPhase");
                     drPa.SelectedIndex = int.Parse(hidPhase.Value);
+                    DropDownList dropapplystatus = (DropDownList)e.Row.FindControl("DDLTepApplyStatus");
+                    HiddenField haps = (HiddenField)e.Row.FindControl("hidApplyStatus");
+                    dropapplystatus.SelectedIndex = int.Parse(haps.Value);
+                    DropDownList dropSelectedSchool = (DropDownList)e.Row.FindControl("ddlSelectSchoolFile");
+                    DataSet dsSS = DI.GetFileInfoByCustomerID_Service(CSIF.CustomerID);
+                    HiddenField hss = (HiddenField)e.Row.FindControl("HDSelectedSchool");
+
+                    dropSelectedSchool.Items.Clear();
+                    dropSelectedSchool.DataSource = dsSS.Tables[0];
+                    dropSelectedSchool.DataTextField = "FilesName";
+                    dropSelectedSchool.DataValueField = "FileID";
+                    dropSelectedSchool.DataBind();
+                    dropSelectedSchool.Items.Insert(0, new ListItem("无选校报告", "-1"));
+                    dropSelectedSchool.SelectedValue = hss.Value;
+
                 }
                 else
                 {
@@ -875,6 +916,35 @@ namespace CRMWebServer.Customer
                     {
                         LabBWT.Text = "次要";
                     }
+                    Label ApplyStatus = (Label)e.Row.FindControl("LabApplyStatus");
+                    if (ApplyStatus.Text == "0")
+                    {
+                        ApplyStatus.Text = "待定";
+                    }
+                    else if (ApplyStatus.Text == "1")
+                    {
+                        ApplyStatus.Text = "被录取";
+                    }
+                    else if (ApplyStatus.Text == "2")
+                    {
+                        ApplyStatus.Text = "被拒";
+                    }
+                    else if (ApplyStatus.Text == "3")
+                    {
+                        ApplyStatus.Text = "放弃";
+                    }
+                    Label LabSelectSchoolFile = (Label)e.Row.FindControl("LabSelectSchoolFile");
+                    if (LabSelectSchoolFile.Text == null || LabSelectSchoolFile.Text == "" || LabSelectSchoolFile.Text=="-1")
+                    {
+                        LabSelectSchoolFile.Text="无选校报告";
+                    }
+                    else
+                    {
+                        DataSet ds= DI.GetFileInfoByFileID_Service(int.Parse(LabSelectSchoolFile.Text));
+                        LabSelectSchoolFile.Text = ds.Tables[0].Rows[0]["FilesName"].ToString();
+                    }
+                    
+
                 }
             }
 
@@ -892,6 +962,7 @@ namespace CRMWebServer.Customer
             IT.IntentionProfession = ((TextBox)gvIntention.Rows[e.RowIndex].FindControl("txtIntentionProfession")).Text;
             IT.IntentionPhase = Int32.Parse(((DropDownList)gvIntention.Rows[e.RowIndex].FindControl("DDLIntentionPhase")).SelectedItem.Value);
             IT.BetterWantpriTo = Int32.Parse(((DropDownList)gvIntention.Rows[e.RowIndex].FindControl("DDLBetterWantTo")).SelectedItem.Value);
+            IT.ApplyStatus = Int32.Parse(((DropDownList)gvIntention.Rows[e.RowIndex].FindControl("DDLTepApplyStatus")).SelectedItem.Value);
             string Intentiondate = ((TextBox)gvIntention.Rows[e.RowIndex].FindControl("txtIntentiondate")).Text.Trim().ToString();
             DateTime dtime = new DateTime();
             try
@@ -904,6 +975,20 @@ namespace CRMWebServer.Customer
                 return;
             }
             IT.Intentiondate = dtime;
+
+            string ApplyEndDate = ((TextBox)gvIntention.Rows[e.RowIndex].FindControl("txtTmpApplyEndDate")).Text.Trim().ToString();
+            DateTime applyEndtime = new DateTime();
+            try
+            {
+                applyEndtime = Convert.ToDateTime(ApplyEndDate);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(UpdatePanel1, this.GetType(), "myscript", "<script>alert('日期格式错误!')</script>", false);
+                return;
+            }
+            IT.ApplyEndDate = applyEndtime;
+            IT.FileID = Int32.Parse(((DropDownList)gvIntention.Rows[e.RowIndex].FindControl("ddlSelectSchoolFile")).SelectedItem.Value);
 
             IT.Remark = ((TextBox)gvIntention.Rows[e.RowIndex].FindControl("txtRemark")).Text;
             MCS.UpdateCustomerIntention_Service(IT);

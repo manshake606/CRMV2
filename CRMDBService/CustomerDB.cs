@@ -637,7 +637,7 @@ namespace CRMDBService
             {
                 SqlQuery += " and ContractNum='" + ContractNum + "'";
             }
-            if (CustomerImprove > 0)
+            if (CustomerImprove == 0 || CustomerImprove==1)
             {
                 SqlQuery += " and CustomerImprove=" + CustomerImprove;
             }

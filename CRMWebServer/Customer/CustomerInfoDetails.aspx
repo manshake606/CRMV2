@@ -271,7 +271,7 @@
                                                                                                         <td align="left">
                                                                                                             <asp:TextBox ID="txtCustomerEnglishName" runat="server"></asp:TextBox>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right" class="left_txt2">
                                                                                                             出生日期：
                                                                                                         </td>
                                                                                                         <td height="30" align="left" class="left_txt">
@@ -313,7 +313,7 @@
                                                                                                             <asp:RequiredFieldValidator ID="REVtelphone" runat="server" ErrorMessage="手机号不能为空"
                                                                                                                 CssClass="left_txt" ControlToValidate="txtTelPhone" Display="Dynamic" ValidationGroup="A1"></asp:RequiredFieldValidator>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right"  class="left_txt2">
                                                                                                             固定电话：
                                                                                                         </td>
                                                                                                         <td height="30" align="left" class="left_txt">
@@ -352,7 +352,7 @@
                                                                                                                 ErrorMessage="客户所在省份不能为空" InitialValue="省份" CssClass="left_txt" ValidationGroup="A1"
                                                                                                                 Display="Dynamic"></asp:RequiredFieldValidator>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right" class="left_txt2">
                                                                                                             所在城市：
                                                                                                         </td>
                                                                                                         <td width="42%" height="30" align="left">
@@ -414,7 +414,7 @@
                                                                                                         <td align="left">
                                                                                                             <asp:TextBox ID="txtRelationshipWithC" runat="server"></asp:TextBox>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right" class="left_txt2">
                                                                                                             决策人姓名：
                                                                                                         </td>
                                                                                                         <td height="30" align="left" class="left_txt">
@@ -456,7 +456,7 @@
                                                                                                         <td width="30%" align="left">
                                                                                                             <asp:TextBox ID="txtOldSchoolName" runat="server"></asp:TextBox>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right" class="left_txt2">
                                                                                                             现学习阶段：
                                                                                                         </td>
                                                                                                         <td height="20" align="left" class="left_txt">
@@ -503,10 +503,10 @@
                                                                                                                 <asp:ListItem Value="8">其他语言渠道</asp:ListItem>
                                                                                                             </asp:DropDownList>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right"  class="left_txt2">
                                                                                                             推荐人：
                                                                                                         </td>
-                                                                                                        <td width="42%" height="30" align="left" class="left_txt">
+                                                                                                        <td width="42%" height="30" align="left" class="left_txt2">
                                                                                                             <asp:TextBox ID="txtRecommendation" runat="server" ValidationGroup="ss"></asp:TextBox>
                                                                                                             <asp:CustomValidator ID="CVReference" runat="server" ControlToValidate="txtRecommendation"
                                                                                                                 ErrorMessage="请填写推荐人"></asp:CustomValidator>
@@ -524,7 +524,7 @@
                                                                                                         <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
                                                                                                             推荐人备注：
                                                                                                         </td>
-                                                                                                        <td height="30" align="left" class="left_txt">
+                                                                                                        <td height="30" align="left" bgcolor="#f2f2f2">
                                                                                                             <asp:TextBox ID="txtRecommendRemark" runat="server"></asp:TextBox>
                                                                                                         </td>
                                                                                                     </tr>
@@ -535,7 +535,7 @@
                                                                                                         <td align="left">
                                                                                                             <asp:TextBox ID="txtImportingPeople" runat="server" Enabled="False"></asp:TextBox>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right" class="left_txt2">
                                                                                                             导入时间：
                                                                                                         </td>
                                                                                                         <td height="30" align="left" class="left_txt">
@@ -543,16 +543,16 @@
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
-                                                                                                    <td height="30" align="right" class="left_txt2">
+                                                                                                    <td height="30" align="right" class="left_txt2" bgcolor="#f2f2f2">
                                                                                                             主要意向国家：
                                                                                                         </td>
-                                                                                                        <td align="left">
+                                                                                                        <td align="left" bgcolor="#f2f2f2">
                                                                                                             <asp:TextBox ID="IntentionCountrytxt" runat="server" Enabled="False"></asp:TextBox>
                                                                                                         </td>
                                                                                                         <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
                                                                                                           
                                                                                                             是否背景提升</td>
-                                                                                                        <td height="30" align="left" class="left_txt">
+                                                                                                        <td height="30" align="left" class="left_txt" bgcolor="#f2f2f2">
                                                                                                             
                                                                                                             <asp:DropDownList ID="ddlCustomerImprove" runat="server" AutoPostBack="True" 
                                                                                                                 Width="126px">
@@ -567,9 +567,9 @@
                                                                                                             合同编号：
                                                                                                         </td>
                                                                                                         <td align="left">
-                                                                                                            <asp:TextBox ID="txtContractNum" runat="server" Enabled="False"></asp:TextBox>
+                                                                                                            <asp:TextBox ID="txtContractNum" runat="server"></asp:TextBox>
                                                                                                         </td>
-                                                                                                        <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="8%" height="30" align="right"  class="left_txt2">
                                                                                                           
                                                                                                            </td>
                                                                                                         <td height="30" align="left" class="left_txt">
@@ -587,10 +587,10 @@
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
-                                                                                                        <td width="20%" height="50" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                        <td width="20%" height="50" align="right" class="left_txt2">
                                                                                                             工作经验：
                                                                                                         </td>
-                                                                                                        <td width="30%" colspan="3" align="left" bgcolor="#f2f2f2">
+                                                                                                        <td width="30%" colspan="3" align="left">
                                                                                                             <asp:TextBox ID="txtWorkExperience" runat="server" Width="568px" TextMode="MultiLine"></asp:TextBox>
                                                                                                         </td>
                                                                                                     </tr>
@@ -865,11 +865,6 @@
                                                                 <table width="98%" height="133" border="0" align="center" cellpadding="0" cellspacing="0">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td height="5" colspan="2">
-                                                                                &nbsp;
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
                                                                             <td bgcolor="#FAFBFC">
                                                                                 &nbsp;
                                                                             </td>
@@ -962,12 +957,51 @@
                                                                                                                 <asp:TemplateField HeaderText="意向出国时间">
                                                                                                                     <EditItemTemplate>
                                                                                                                         <asp:TextBox ID="txtIntentiondate" runat="server" 
-                                                                                                                            Text='<%# Bind("Intentiondate") %>' onclick="new Calendar().show(this);"></asp:TextBox>
+                                                                                                                            Text='<%# Bind("Intentiondate","{0:yyyy-MM.dd}") %>' onclick="new Calendar().show(this);"></asp:TextBox>
                                                                                                                     </EditItemTemplate>
                                                                                                                     <ItemTemplate>
                                                                                                                         <asp:Label ID="Lab_intentiondate" runat="server" 
-                                                                                                                            Text='<%# Bind("Intentiondate") %>'></asp:Label>
+                                                                                                                            Text='<%# Bind("Intentiondate","{0:yyyy-MM.dd}") %>'></asp:Label>
                                                                                                                     </ItemTemplate>
+                                                                                                                </asp:TemplateField>
+                                                                                                                <asp:TemplateField HeaderText="申请状态" SortExpression="ApplyStatus">
+                                                                                                                    <EditItemTemplate>
+                                                                                                                        <asp:DropDownList ID="DDLTepApplyStatus" runat="server" 
+                                                                                                                            style="margin-right: 0px">
+                                                                                                                        <asp:ListItem Value="0">待定</asp:ListItem>
+                                                                                                                        <asp:ListItem Value="1">被录取</asp:ListItem>
+                                                                                                                        <asp:ListItem Value="2">被拒</asp:ListItem>
+                                                                                                                        <asp:ListItem Value="3">放弃</asp:ListItem>
+                                                                                                                        </asp:DropDownList>
+                                                                                                                        <br />
+                                                                                                                        <asp:HiddenField ID="hidApplyStatus" runat="server" 
+                                                                                                                            Value='<%# Bind("ApplyStatus") %>' />
+                                                                                                                    </EditItemTemplate>
+                                                                                                                    <ItemTemplate>
+                                                                                                                        <asp:Label ID="LabApplyStatus" runat="server" Text='<%# Bind("ApplyStatus") %>'></asp:Label>
+                                                                                                                    </ItemTemplate>
+                                                                                                                </asp:TemplateField>
+                                                                                                                <asp:TemplateField HeaderText="申请截止时间" SortExpression="ApplyEndDate">
+                                                                                                                    <EditItemTemplate>
+                                                                                                                        <asp:TextBox ID="txtTmpApplyEndDate" runat="server" 
+                                                                                                                            onclick="new Calendar().show(this);" Text='<%# Bind("ApplyEndDate","{0:yyyy-MM.dd}") %>'></asp:TextBox>
+                                                                                                                    </EditItemTemplate>
+                                                                                                                    <ItemTemplate>
+                                                                                                                        <asp:Label ID="LabApplyEndDate" runat="server" 
+                                                                                                                            Text='<%# Bind("ApplyEndDate","{0:yyyy-MM.dd}") %>'></asp:Label>
+                                                                                                                    </ItemTemplate>
+                                                                                                                </asp:TemplateField>
+                                                                                                                <asp:TemplateField HeaderText="选校报告">
+                                                                                                                    <ItemTemplate>
+                                                                                                                        <asp:Label ID="LabSelectSchoolFile" runat="server" Text='<%# Bind("FileID") %>'></asp:Label>
+                                                                                                                    </ItemTemplate>
+                                                                                                                    <EditItemTemplate>
+                                                                                                                        <asp:DropDownList ID="ddlSelectSchoolFile" runat="server">
+                                                                                                                        </asp:DropDownList>
+                                                                                                                        <br />
+                                                                                                                        <asp:HiddenField ID="HDSelectedSchool" runat="server" 
+                                                                                                                            Value='<%# Eval("FileID") %>' />
+                                                                                                                    </EditItemTemplate>
                                                                                                                 </asp:TemplateField>
                                                                                                                 <asp:TemplateField HeaderText="备注">
                                                                                                                     <ItemTemplate>
@@ -1041,9 +1075,14 @@
                                                                                                         <asp:TextBox ID="txtIntentiondate" runat="server" onclick="new Calendar().show(this);"></asp:TextBox>
                                                                                                     </td>
                                                                                                     <td height="30" align="right" class="style4">
-                                                                                                        &nbsp;</td>
-                                                                                                    <td style="width: 100px">
-                                                                                                        &nbsp;</td>
+                                                                                                        选校状态：</td>
+                                                                                                    <td style="width: 100px" align=left>
+                                                                                                        <asp:DropDownList ID="DDLApplyStatus" runat="server">
+                                                                                                            <asp:ListItem Value="0">待定</asp:ListItem>
+                                                                                                            <asp:ListItem Value="1">被录取</asp:ListItem>
+                                                                                                            <asp:ListItem Value="2">被拒</asp:ListItem>
+                                                                                                            <asp:ListItem Value="3">放弃</asp:ListItem>
+                                                                                                        </asp:DropDownList></td>
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td width="25%" height="30" align="right" class="left_txt2" style="width: 100px">
@@ -1072,7 +1111,22 @@
                                                                                                 </tr>
                                                                                                 <tr>
                                                                                                     <td width="25%" height="30" align="right" class="left_txt2" style="width: 100px">
-                                                                                                        备注：
+                                                                                                        申请截止日期：
+                                                                                                    </td>
+                                                                                                    <td align="left" style="width: 100px">
+                                                                                                       <asp:TextBox ID="txtApplyEndDate" runat="server" onclick="new Calendar().show(this);"></asp:TextBox>
+                                                                                                    </td>
+                                                                                                    <td height="30" align="right" class="style4">
+                                                                                                        选择选校报告：
+                                                                                                    </td>
+                                                                                                    <td style="width: 100px" align="left">
+                                                                                                        <asp:DropDownList ID="DDLIntentionSchoolFile" runat="server">
+                                                                                                        </asp:DropDownList>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="25%" height="30" align="right" class="left_txt2" style="width: 100px">
+                                                                                                        选校备注：
                                                                                                     </td>
                                                                                                     <td colspan="3" align="left" style="width: 100px">
                                                                                                         <asp:TextBox ID="txtIntentionRemark" runat="server" Height="43px" TextMode="MultiLine"
