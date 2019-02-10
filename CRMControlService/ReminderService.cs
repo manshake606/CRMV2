@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using CRMDBService;
+using ModelService;
 
 namespace CRMControlService
 {
@@ -50,6 +51,29 @@ namespace CRMControlService
             ds = RDB.GetFollowupRemindInfobyStaffID(staffID);
             return ds;
         }
+
+        public DataSet GetCustomRemindInfobyStaffID_Service(int staffID)
+        {
+            ds = RDB.GetCustomRemindInfobyStaffID(staffID);
+            return ds;
+        }
+
+        public void InsertCustomRemindInfo_Service(DateTime RemindDate, string RemindContent, int CreatedBy, int IsActive)
+        {
+            RDB.InsertCustomRemindInfo(RemindDate, RemindContent, CreatedBy, IsActive);
+        }
+
+        public void UpdateCustomRemindInfo_Service(CustomRemindInfo CRIF)
+        {
+            RDB.UpdateCustomRemindInfo(CRIF);
+        }
+
+        public void DeleteCustomerRemindbyID_Service(int ID)
+        {
+            RDB.DeleteCustomerRemindbyID(ID);
+        }
+
+
     }
 
 

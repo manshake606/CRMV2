@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Web.SessionState;
 using CRMControlService;
 using ModelService;
+using System.IO;
 using System.Configuration;
 
 namespace CRMWebServer.Document
@@ -24,6 +25,7 @@ namespace CRMWebServer.Document
         CRMControlService.FinancialService FSv = new FinancialService();
         CRMControlService.StaffInfoService SISv = new StaffInfoService();
         CRMControlService.AuthorityService AS = new AuthorityService();
+        CRMControlService.ModifyCustomerService MCSv = new ModifyCustomerService();
 
         CRMWebServer.FinancialPage.Payment PM = new CRMWebServer.FinancialPage.Payment();
 
@@ -31,11 +33,19 @@ namespace CRMWebServer.Document
         ModelService.StaffInfo SI = new StaffInfo();
         ModelService.CustomerInfo CI = new CustomerInfo();
         ModelService.StaffInfo staffInfo = new StaffInfo();
-        string moduleID;
+        string filePath = ConfigurationManager.AppSettings["UploadFilePath"];
+        //string moduleID;
         DataSet dsGetDocInfo;
-        DataSet dsDocumentName;
-        DataSet PID;
+        //DataSet dsDocumentName;
+        //DataSet PID;
         int PostID;
+        DateTime? uploadStartTime = null;
+        DateTime? uploadEndTime = null;
+        int CusomterID = 0;
+        string CustomerName = "";
+        string DocumentName = "";
+        string UploadedBy = "";
+        int FileType;
        
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,12 +53,13 @@ namespace CRMWebServer.Document
             if (HttpContext.Current.Session["staffID"] != null)
             {
                 staffInfo.StaffID = Int32.Parse(HttpContext.Current.Session["staffID"].ToString());
-                moduleID = ConfigurationManager.AppSettings["Copywriter"];
+                //moduleID = ConfigurationManager.AppSettings["Copywriter"];
 
-                dsDocumentName = SISv.GetStaffNamebyStaffID_Service(staffInfo.StaffID);
-                PID = SISv.GetStaffPIDByName_Service(dsDocumentName.Tables[0].Rows[0]["StaffName"].ToString());
-                PostID = int.Parse(PID.Tables[0].Rows[0]["PostID"].ToString());
+                //dsDocumentName = SISv.GetStaffNamebyStaffID_Service(staffInfo.StaffID);
+                //PID = SISv.GetStaffPIDByName_Service(dsDocumentName.Tables[0].Rows[0]["StaffName"].ToString());
+                //PostID = int.Parse(PID.Tables[0].Rows[0]["PostID"].ToString());
 
+                /*
                 try
                 {
                     //判断该员工是否有权限删除已上传文档
@@ -90,6 +101,22 @@ namespace CRMWebServer.Document
                 {
                     Response.Write(exp.Message);
                 }
+                 * */
+                if (!IsPostBack)
+                {
+                    DataTable dt = new DataTable();
+                    DataSet dsFileInfo = DocInfoSv.GetFileTypeInfo_Service();
+                    dt = dsFileInfo.Tables[0];
+                    DDLFileType.Items.Clear();
+                    DDLFileType.DataSource = dt;
+                    DDLFileType.DataValueField = dt.Columns[0].ColumnName;
+                    DDLFileType.DataTextField = dt.Columns[1].ColumnName;
+                    DDLFileType.DataBind();
+                    DDLFileType.Items.Insert(0, new ListItem("所有文件类型", "-1"));
+                }
+                
+
+
             }
             else
             {
@@ -97,52 +124,64 @@ namespace CRMWebServer.Document
                 //Response.Redirect("../Login.aspx");
                 Response.Write("<script>window.top.location='../Nologin.aspx';</script>");
             }
+            
+        }
+
+        //下载方法
+        public void DownloadFile(string fileName)
+        {
+            
+            string strTemp = System.Web.HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
+            FileInfo fi = new FileInfo(@filePath + @"\" + filesInfo.FolderID + @"\" + filesInfo.FileType + @"\" + fileName);
+            Response.Clear();
+            //解决文件名乱码                    
+            Response.AppendHeader("content-disposition", "attachment;filename=" + strTemp);
+            //附件下载                    
+            //Response.AppendHeader("content-disposition", "online;filename=" + strName);
+            //在线打开                    
+            //Response.OutputStream.Write(data, 0, nSize);     
+            Response.WriteFile(fi.FullName);
+            Response.Flush();
+            Response.End();
+
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtStarttime.Text.Trim().ToString() != null && txtEndtime.Text.Trim().ToString() != null)
-            {
-                DateTime strStartTime = Convert.ToDateTime(txtStarttime.Text.Trim() + " 00:00:00.000");
-                DateTime strEndTime = Convert.ToDateTime(txtEndtime.Text.Trim() + " 23:59:59.000");
 
-                try
-                { 
-                    //文案搜索所有经过自己操作过的客户文案信息（包含正在进行的和已归档完毕的）
-                    if (PostID == 2 || PostID == 3 || PostID == 4)
-                    {
-                        dsGetDocInfo = DocInfoSv.GetDocInfoByDate_Service(strStartTime, strEndTime, staffInfo.StaffID);
-                    }
-                    else
-                    {
-                        //经理可以查看到所有用户的文档信息和状态
-                        if (PostID == 1)
-                        {
-                            dsGetDocInfo = DocInfoSv.GetDocInfoByDate_Service(strStartTime, strEndTime);
-                        }
-                        else
-                        {
-                            //顾问可以查看自己所指派过的客户文案信息
-                            if (PostID == 6 || PostID == 7 || PostID == 8 || PostID == 9)
-                            {
-                                dsGetDocInfo = DocInfoSv.GetDocInfoByGW_Service(strStartTime, strEndTime, staffInfo.StaffID);
-                            }
-                        }
-                    }
+            BindGvSearch();
+        }
 
-                    ResetDataSet(dsGetDocInfo);
-                    gvSearchResult.DataSource = dsGetDocInfo;
-                    gvSearchResult.DataBind();
-                }
-                catch (Exception exp)
-                {
-                    Response.Write(exp.Message);
-                }
-            }
-            else
+        public void BindGvSearch()
+        {
+            if (txtStarttime.Text != null && txtStarttime.Text != "")
             {
-                Response.Write("<script>alert('请输入查询时间段')</script>");
+                uploadStartTime = DateTime.Parse(txtStarttime.Text);
             }
+            if (txtEndtime.Text != null && txtEndtime.Text != "")
+            {
+                uploadEndTime = DateTime.Parse(txtEndtime.Text + " 23:59:59.000");
+            }
+            if (txtCustomerID.Text != null && txtCustomerID.Text != "")
+            {
+                CusomterID = int.Parse(txtCustomerID.Text);
+            }
+            if (txtCustomerName.Text != null && txtCustomerName.Text != "")
+            {
+                CustomerName = txtCustomerName.Text;
+            }
+            if (txtDocumentName.Text != null && txtDocumentName.Text != "")
+            {
+                DocumentName = txtDocumentName.Text;
+            }
+            if (txtUploadBy.Text != null && txtUploadBy.Text != "")
+            {
+                UploadedBy = txtUploadBy.Text;
+            }
+            FileType = int.Parse(DDLFileType.SelectedValue);
+            DataSet dsFileInfo = DocInfoSv.GetFileInfoByCondition_Service(CusomterID, CustomerName, uploadStartTime, uploadEndTime, DocumentName, UploadedBy, FileType);
+            gvSearchResult.DataSource = dsFileInfo;
+            gvSearchResult.DataBind();
         }
 
         //将已有Dataset转换成需要的Dataset
@@ -209,11 +248,25 @@ namespace CRMWebServer.Document
 
         protected void gvSearchResult_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Upload")
+            DataSet ds = DocInfoSv.GetFileInfoByFileID_Service(int.Parse(e.CommandArgument.ToString()));
+            if (e.CommandName == "download")
             {
-                Session["CustomerID"] = null;
-                string url = "../Document/UploadDocument.aspx?CustomerID=" + e.CommandArgument.ToString();
-                Response.Redirect(url);
+                filesInfo.FileType = int.Parse(ds.Tables[0].Rows[0]["FileType"].ToString());
+                filesInfo.FolderID = ds.Tables[0].Rows[0]["FolderID"].ToString();
+                DownloadFile(ds.Tables[0].Rows[0]["FilesName"].ToString());
+
+            }
+            if (e.CommandName == "Remove")
+            {
+
+                if (File.Exists(filePath + @"\" + ds.Tables[0].Rows[0]["FolderID"].ToString() + @"\" + ds.Tables[0].Rows[0]["FileType"].ToString() + @"\" + ds.Tables[0].Rows[0]["FilesName"].ToString()))
+                {
+                    DocInfoSv.RemoveFileInfo_Service(e.CommandArgument.ToString());
+                    MCSv.DeleteFileInfoRelationbyFileID_Service(int.Parse(e.CommandArgument.ToString()));
+                    File.Delete(filePath + @"\" + ds.Tables[0].Rows[0]["FolderID"].ToString() + @"\" + ds.Tables[0].Rows[0]["FileType"].ToString() + @"\" + ds.Tables[0].Rows[0]["FilesName"].ToString());
+                    //filesInfo.Customer = int.Parse(ds.Tables[0].Rows[0]["Customer"].ToString());
+                    BindGvSearch();
+                }
             }
         }
     }

@@ -216,6 +216,21 @@
                              <li><a href="Document/UploadFile.aspx" target="main">文档上传</a></li>
                         </ul>
                     </div>
+                     <h1 class="type">
+                        <a href="javascript:void(0)">提醒设置管理</a></h1>
+                    <div class="content">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td>
+                                    <img src="images/menu_topline.gif" width="182" height="5" />
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="MM">
+                            <li><a href="Remind/CustomRemind.aspx" target="main">自定提醒</a></li>
+                             
+                        </ul>
+                    </div>
                     <h1 class="type">
                         <a href="javascript:void(0)">财务信息管理</a></h1>
                     <div class="content">

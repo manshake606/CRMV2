@@ -951,11 +951,12 @@
                                                                                                                     <EditItemTemplate>
                                                                                                                         <asp:DropDownList ID="DDLIntentionPhase" runat="server" Width="60px">
                                                                                                                             <asp:ListItem Selected="True" Value="0">未定</asp:ListItem>
-                                                                                                                            <asp:ListItem Value="1">初中</asp:ListItem>
+                                                                                                                            <asp:ListItem Value="1">小学</asp:ListItem>
+                                                                                                                            <asp:ListItem Value="2">初中</asp:ListItem>
                                                                                                                             <asp:ListItem Value="3">高中</asp:ListItem>
-                                                                                                                            <asp:ListItem Value="3">本科</asp:ListItem>
-                                                                                                                            <asp:ListItem Value="4">硕士</asp:ListItem>
-                                                                                                                            <asp:ListItem Value="5">博士</asp:ListItem>
+                                                                                                                            <asp:ListItem Value="4">本科</asp:ListItem>
+                                                                                                                            <asp:ListItem Value="5">硕士</asp:ListItem>
+                                                                                                                            <asp:ListItem Value="6">博士</asp:ListItem>
                                                                                                                         </asp:DropDownList>
                                                                                                                         <asp:HiddenField ID="HidIntentionPhase" runat="server" Value='<%# bind("IntentionPhase") %>' />
                                                                                                                     </EditItemTemplate>
@@ -975,11 +976,11 @@
                                                                                                                 <asp:TemplateField HeaderText="意向出国时间">
                                                                                                                     <EditItemTemplate>
                                                                                                                         <asp:TextBox ID="txtIntentiondate" runat="server" 
-                                                                                                                            Text='<%# Bind("Intentiondate","{0:yyyy-MM.dd}") %>' onclick="new Calendar().show(this);"></asp:TextBox>
+                                                                                                                            Text='<%# Bind("Intentiondate","{0:yyyy-MM-dd}") %>' onclick="new Calendar().show(this);"></asp:TextBox>
                                                                                                                     </EditItemTemplate>
                                                                                                                     <ItemTemplate>
                                                                                                                         <asp:Label ID="Lab_intentiondate" runat="server" 
-                                                                                                                            Text='<%# Bind("Intentiondate","{0:yyyy-MM.dd}") %>'></asp:Label>
+                                                                                                                            Text='<%# Bind("Intentiondate","{0:yyyy-MM-dd}") %>'></asp:Label>
                                                                                                                     </ItemTemplate>
                                                                                                                 </asp:TemplateField>
                                                                                                                 <asp:TemplateField HeaderText="申请状态" SortExpression="ApplyStatus">
@@ -1002,11 +1003,11 @@
                                                                                                                 <asp:TemplateField HeaderText="申请截止时间" SortExpression="ApplyEndDate">
                                                                                                                     <EditItemTemplate>
                                                                                                                         <asp:TextBox ID="txtTmpApplyEndDate" runat="server" 
-                                                                                                                            onclick="new Calendar().show(this);" Text='<%# Bind("ApplyEndDate","{0:yyyy-MM.dd}") %>'></asp:TextBox>
+                                                                                                                            onclick="new Calendar().show(this);" Text='<%# Bind("ApplyEndDate","{0:yyyy-MM-dd}") %>'></asp:TextBox>
                                                                                                                     </EditItemTemplate>
                                                                                                                     <ItemTemplate>
                                                                                                                         <asp:Label ID="LabApplyEndDate" runat="server" 
-                                                                                                                            Text='<%# Bind("ApplyEndDate","{0:yyyy-MM.dd}") %>'></asp:Label>
+                                                                                                                            Text='<%# Bind("ApplyEndDate","{0:yyyy-MM-dd}") %>'></asp:Label>
                                                                                                                     </ItemTemplate>
                                                                                                                 </asp:TemplateField>
                                                                                                                 <asp:TemplateField HeaderText="选校报告">

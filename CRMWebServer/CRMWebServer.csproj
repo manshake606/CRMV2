@@ -240,6 +240,7 @@
     <Content Include="Process\TaskAssign.aspx" />
     <Content Include="ProvinceCity\Province.xml" />
     <Content Include="RemindFollowUp.aspx" />
+    <Content Include="Remind\CustomRemind.aspx" />
     <Content Include="right.aspx" />
     <Content Include="Staff\StaffAdd.aspx" />
     <Content Include="Staff\StaffInformations.aspx" />
@@ -424,6 +425,13 @@
     </Compile>
     <Compile Include="RemindFollowUp.aspx.designer.cs">
       <DependentUpon>RemindFollowUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Remind\CustomRemind.aspx.cs">
+      <DependentUpon>CustomRemind.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Remind\CustomRemind.aspx.designer.cs">
+      <DependentUpon>CustomRemind.aspx</DependentUpon>
     </Compile>
     <Compile Include="right.aspx.cs">
       <DependentUpon>right.aspx</DependentUpon>

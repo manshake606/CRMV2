@@ -42,6 +42,18 @@ namespace CRMControlService
             CDB.RemoveFileInfo(FileID);
         }
 
+        //获取文件类型信息
+        public DataSet GetFileTypeInfo_Service()
+        {
+            return CDB.GetFileTypeInfo();
+        }
+
+        //根据条件获取文件信息
+        public DataSet GetFileInfoByCondition_Service(int CustomerID, string CustomerName, DateTime? uploadStartTime, DateTime? uploadEndTime, string FileName, string UploadedBy, int FileType)
+        {
+            return CDB.GetFileInfoByCondition(CustomerID, CustomerName, uploadStartTime, uploadEndTime, FileName, UploadedBy, FileType);
+        }
+
         public int IsFIDExistData(string FolderID)
         {
             return CDB.IsFIDExistInfo(FolderID);

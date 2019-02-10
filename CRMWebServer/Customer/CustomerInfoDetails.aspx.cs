@@ -891,21 +891,25 @@ namespace CRMWebServer.Customer
                     }
                     else if (IntentionPhase.Text == "1")
                     {
-                        IntentionPhase.Text = "初中";
+                        IntentionPhase.Text = "小学";
                     }
                     else if (IntentionPhase.Text == "2")
                     {
-                        IntentionPhase.Text = "高中";
+                        IntentionPhase.Text = "初中";
                     }
                     else if (IntentionPhase.Text == "3")
                     {
-                        IntentionPhase.Text = "本科";
+                        IntentionPhase.Text = "高中";
                     }
                     else if (IntentionPhase.Text == "4")
                     {
-                        IntentionPhase.Text = "硕士";
+                        IntentionPhase.Text = "本科";
                     }
                     else if (IntentionPhase.Text == "5")
+                    {
+                        IntentionPhase.Text = "硕士";
+                    }
+                    else if (IntentionPhase.Text == "6")
                     {
                         IntentionPhase.Text = "博士";
                     }

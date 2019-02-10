@@ -8,12 +8,13 @@ using System.Web;
 using System.Data.Common;
 using System.Configuration;
 using System.Text;
+using ModelService;
 
 namespace CRMDBService
 {
     public class ReminderDB
     {
-
+        
         public DataSet GetFamilyRemindInfo(int staffID)
         {
             DataSet ds = new DataSet();
@@ -81,5 +82,67 @@ namespace CRMDBService
             DbCommand cmd = db.GetSqlStringCommond(sqlstr);
             db.ExecuteNonQuery(cmd);
         }
+
+
+        public DataSet GetCustomRemindInfobyStaffID(int staffID)
+        {
+            DataSet ds = new DataSet();
+            DbHelper db = new DbHelper();
+            string str = "";
+            str += "select CustomRemind.ID,CustomRemind.RemindDate,CustomRemind.RemindContent,CustomRemind.CreatedBy,CustomRemind.IsActive,CustomRemind.CreateTime from CustomRemind join StaffInfo on CustomRemind.CreatedBy=StaffInfo.StaffID where CustomRemind.IsActive=1 and  CustomRemind.CreatedBy='" + staffID + "'";
+            DbCommand cmd = db.GetSqlStringCommond(str);
+            ds = db.ExecuteDataSet(cmd);
+            return ds;
+        }
+
+        public void InsertCustomRemindInfo(DateTime RemindDate, string RemindContent, int CreatedBy, int IsActive)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "Insert into CustomRemind(RemindDate,RemindContent,CreatedBy,IsActive,CreateTime) ";
+            sqlstr += " values ";
+            sqlstr += "('";
+            sqlstr += RemindDate+"'"; 
+            sqlstr += ",'";
+            sqlstr += RemindContent + "'";
+            sqlstr += ",'";
+            sqlstr += CreatedBy.ToString() + "'";
+            sqlstr += ",'";
+            sqlstr += IsActive.ToString() + "'";
+            sqlstr += ",";
+            sqlstr += "'"+DateTime.Now.ToString()+"'";
+            sqlstr += ")";
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void DeleteCustomerRemindbyID(int ID)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "Update";
+            sqlstr += " CustomRemind ";
+            sqlstr += " set CustomRemind.IsActive='0' where CustomRemind.ID='" + ID + "'";
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            db.ExecuteNonQuery(cmd);
+        }
+
+        public void UpdateCustomRemindInfo(CustomRemindInfo CRIF)
+        {
+
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "Update";
+            sqlstr += " CustomRemind ";
+            sqlstr += " set CustomRemind.RemindDate='" + CRIF.RemindDate.ToString()+"',";
+            sqlstr += " CustomRemind.RemindContent='" + CRIF.RemindContent+"',";
+            sqlstr += " CustomRemind.CreatedBy='" + CRIF.CreatedBy.ToString()+"',";
+            sqlstr += " CustomRemind.IsActive='" + CRIF.IsActive.ToString()+"',";
+            sqlstr += " CustomRemind.CreateTime='" + CRIF.CreateTime.ToString()+ "'";
+            sqlstr += " where CustomRemind.ID='" + CRIF.ID + "'";
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            db.ExecuteNonQuery(cmd);
+        }
+
     }
 }

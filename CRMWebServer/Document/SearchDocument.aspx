@@ -49,7 +49,7 @@
                     <tr>
                         <td height="31">
                             <div class="titlebt">
-                                搜索文案
+                                文档搜索
                             </div>
                         </td>
                     </tr>
@@ -67,7 +67,7 @@
                 <table width="98%" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td class="left_txt">
-                            当前位置：文案搜索
+                            当前位置：文档搜索
                         </td>
                     </tr>
                     <tr>
@@ -88,7 +88,7 @@
                                         <img src="../images/title.gif" width="54" height="55">
                                     </td>
                                     <td width="90%" valign="top">
-                                        <span class="left_txt2">在这里，您可以根据您的需求，输入对应的搜索条件，搜索文案相关的结果。</span><span class="left_txt3"></span><span
+                                        <span class="left_txt2">在这里，您可以根据您的需求，输入对应的搜索条件，搜索文档相关的结果。</span><span class="left_txt3"></span><span
                                             class="left_txt2"></span><br>
                                         <span class="left_txt2"></span><span class="left_txt3"></span><span class="left_txt2">
                                         </span><span class="left_txt3"></span><span class="left_txt2"></span>
@@ -121,7 +121,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <asp:Label ID="Label1" runat="server" Text="指派给文案的时间从：" Width="125px" CssClass="left_txt"></asp:Label>
+                                        <asp:Label ID="Label1" runat="server" Text="文件上传时间从：" Width="125px" CssClass="left_txt"></asp:Label>
                                     </td>
                                     <td height="30" bgcolor="#f2f2f2">
                                         <asp:TextBox ID="txtStarttime" runat="server" onclick="new Calendar().show(this);"></asp:TextBox>
@@ -143,6 +143,72 @@
                                     <td>
                                         <asp:Button ID="btnSearch" runat="server" Text="搜索" CssClass="left_txt" OnClick="btnSearch_Click" />
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="LabCustomerID" runat="server" Text="客户编号：" Width="125px" 
+                                            CssClass="left_txt"></asp:Label>
+                                    </td>
+                                    <td height="30" bgcolor="#f2f2f2">
+                                        <asp:TextBox ID="txtCustomerID" runat="server" 
+                                            ></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="REVCustomerID" runat="server" 
+                                            ErrorMessage="客户编号格式错误" CssClass="left_txt" 
+                                            ControlToValidate="txtCustomerID" Display="Dynamic" 
+                                            ValidationExpression="^[0-9]*$"></asp:RegularExpressionValidator>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="LabCustomerName" runat="server" Text="客户姓名：" Width="118px" 
+                                            CssClass="left_txt"></asp:Label>
+                                    </td>
+                                    <td height="30">
+                                        <asp:TextBox ID="txtCustomerName" runat="server" 
+                                            ></asp:TextBox>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="LabDocumentName" runat="server" Text="文档名称：" Width="125px" 
+                                            CssClass="left_txt"></asp:Label>
+                                    </td>
+                                    <td height="30" bgcolor="#f2f2f2">
+                                        <asp:TextBox ID="txtDocumentName" runat="server" 
+                                            ></asp:TextBox>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="LabUploadBy" runat="server" Text="上传者：" Width="118px" 
+                                            CssClass="left_txt"></asp:Label>
+                                    </td>
+                                    <td height="30">
+                                        <asp:TextBox ID="txtUploadBy" runat="server" 
+                                            ></asp:TextBox>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="LabFileType" runat="server" Text="文档名称：" Width="125px" 
+                                            CssClass="left_txt"></asp:Label>
+                                    </td>
+                                    <td height="30" bgcolor="#f2f2f2">
+                                        <asp:DropDownList ID="DDLFileType" runat="server">
+                                        </asp:DropDownList>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
+                                    <td height="30">
+                                        &nbsp;</td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        &nbsp;</td>
                                 </tr>
                             </table>
                         </td>
@@ -167,25 +233,23 @@
                                 CellPadding="3" ForeColor="Black" GridLines="Horizontal">
                                 <RowStyle HorizontalAlign="Center" />
                                 <Columns>
-                                    <asp:HyperLinkField DataNavigateUrlFields="CustomerID" DataNavigateUrlFormatString="~/Document/DocumentList.aspx?CustomerID={0}"
-                                        DataTextField="CustomerNewID" HeaderText="客户编号" />
-                                    <asp:BoundField HeaderText="客户姓名" DataField="CustomerName" />
-                                    <asp:BoundField HeaderText="合同编号" DataField="ContractID" />
-                                    <asp:BoundField HeaderText="顾问姓名" DataField="ConsultantName" />
-                                    <asp:BoundField HeaderText="文案姓名" DataField="DocumentName" />
-                                    <asp:BoundField HeaderText="学习阶段" DataField="AdmissionPhase" />
-                                    <asp:BoundField HeaderText="签约学校" DataField="AdmissionSname" />
-                                    <asp:BoundField HeaderText="专业" DataField="AdmissionProfessionName" />
-                                    <asp:BoundField HeaderText="国家" DataField="AdmissionCountry" />
-                                    <asp:BoundField HeaderText="代理" DataField="ProxyName" />
-                                    <asp:BoundField HeaderText="结案时间" DataField="EndDate" />
-                                    <asp:BoundField HeaderText="文案状态" DataField="AssignNewStatus" />
-                                    <asp:BoundField HeaderText="指派给文案的时间" DataField="BindDate" />
-
+                                    <asp:BoundField DataField="FileID" HeaderText="文件ID" />
+                                    <asp:BoundField DataField="Customer" HeaderText="客户ID" />
+                                    <asp:BoundField DataField="CustomerName" HeaderText="客户姓名" />
+                                    <asp:BoundField DataField="FilesName" HeaderText="文档名称" />
+                                    <asp:BoundField DataField="DoccumentTypeName" HeaderText="文档类型" />
+                                    <asp:BoundField DataField="FileUploadTime" HeaderText="上传时间" />
+                                    <asp:BoundField DataField="StaffName" HeaderText="上传者" />
                                     <asp:TemplateField HeaderText="操作" ShowHeader="False">
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="lbtnUpload" runat="server" CausesValidation="False" CommandArgument='<%# bind("CustomerID") %>'
-                                                CommandName="Upload" Text="上传文案"></asp:LinkButton>
+                                            <asp:LinkButton ID="lbtnDownload" runat="server" CausesValidation="False" CommandArgument='<%# bind("FileID") %>'
+                                                CommandName="download" Text="下载"></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="操作" ShowHeader="False">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lbtnRemove" runat="server" CausesValidation="False" CommandArgument='<%# bind("FileID") %>'
+                                                CommandName="Remove" Text="删除"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     
