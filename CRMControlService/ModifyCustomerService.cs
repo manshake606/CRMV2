@@ -214,6 +214,26 @@ namespace CRMControlService
                 {
                     CIF.CustomerFrom = 7;
                 }
+                else if (DR["CustomerFrom"].ToString() == "环球雅思")
+                {
+                    CIF.CustomerFrom = 9;
+                }
+                else if (DR["CustomerFrom"].ToString() == "朗阁培训")
+                {
+                    CIF.CustomerFrom = 10;
+                }
+                else if (DR["CustomerFrom"].ToString() == "星马教育")
+                {
+                    CIF.CustomerFrom = 11;
+                }
+                else if (DR["CustomerFrom"].ToString() == "三立教育")
+                {
+                    CIF.CustomerFrom = 12;
+                }
+                else if (DR["CustomerFrom"].ToString() == "其他语言渠道")
+                {
+                    CIF.CustomerFrom = 8;
+                }
                 
             }
             CIF.Reference = DR["Reference"].ToString().Trim();
@@ -222,6 +242,16 @@ namespace CRMControlService
             //CIF.ImportingPeople = DR["ImportingPeople"].ToString().Trim();
             CIF.ImportingDate = DateTime.Now;
             CIF.Remark = DR["Remark"].ToString().Trim();
+            if (DR["CustomerImprove"].ToString() == "是")
+            {
+                CIF.CustomerImprove = 0;
+            }
+            else if (DR["CustomerImprove"].ToString() == "否")
+            {
+                CIF.CustomerImprove = 1;
+            }
+            CIF.ContractNum = DR["ContractNum"].ToString().Trim();
+            CIF.WorkExperience = DR["WorkExperience"].ToString().Trim();
             IT.BetterWantpriTo = 0;
             IT.IntentionCountry = DR["IntentionCountry"].ToString().Trim();
             IT.IntentionPhase = 0;

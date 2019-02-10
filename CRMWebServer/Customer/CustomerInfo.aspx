@@ -226,9 +226,6 @@
                                                             <td width="17%" bgcolor="#f2f2f2" class="style3">
                                                                 <asp:TextBox ID="txtCustomerName" runat="server" Enabled="False"></asp:TextBox>
                      <%--  <asp:CustomValidator ID="CVCustomerName" runat="server" ErrorMessage="姓名不合法" CssClass="left_txt"></asp:CustomValidator>--%> 
- <asp:RegularExpressionValidator ID="REVCustomerName" runat="server" ControlToValidate="txtCustomerName"  ErrorMessage="中文<10个" 
-                                                                    CssClass="left_txt" ValidationExpression="^[\u4e00-\u9fa5]{0,10}$" 
-                                                                    Display="Dynamic"></asp:RegularExpressionValidator>  
                                                             </td>
                                                             <td width="8%" align="left" bgcolor="#f2f2f2" class="style2">
                                                                 <asp:CheckBox ID="ckbCustomerEnglishName" runat="server" Text="客户英文名：" 
@@ -294,9 +291,6 @@
                                                                 <asp:TextBox ID="txtIntentionCountry" runat="server" Enabled="False"></asp:TextBox>
        <%--<asp:RegularExpressionValidator ID="REVCityLetter" runat="server" ControlToValidate="txtIntentionCountry"  ErrorMessage="只能为字母" CssClass="left_txt" ValidationExpression="^[a-zA-Z]{1,12}$">
        </asp:RegularExpressionValidator> --%>
-        <asp:RegularExpressionValidator ID="revIntentionCountry" runat="server" ControlToValidate="txtIntentionCountry"  ErrorMessage="中文<10个" 
-                                                                    CssClass="left_txt" ValidationExpression="^[\u4e00-\u9fa5]{0,10}$" 
-                                                                    Display="Dynamic"></asp:RegularExpressionValidator> 
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -307,10 +301,6 @@
                                                             <td bgcolor="#f2f2f2" class="style5">
                                                                
                                                                 <asp:TextBox ID="txtImportingPeople" runat="server" Enabled="False"></asp:TextBox>
-                                           <asp:RegularExpressionValidator ID="revImportingPeople" runat="server" 
-                                                                    ControlToValidate="txtImportingPeople"  ErrorMessage="中文<10个" 
-                                                                    CssClass="left_txt" ValidationExpression="^[\u4e00-\u9fa5]{0,10}$" 
-                                                                    Display="Dynamic"></asp:RegularExpressionValidator> 
                                                             </td>
                                                             <td width="8%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">
  <asp:CheckBox ID="ckbFollowUpConsultant" runat="server" Text="跟进顾问：" AutoPostBack="True" 
@@ -319,9 +309,6 @@
                                                             <td width="15%" bgcolor="#f2f2f2">
                                                                 
                                                                 <asp:TextBox ID="txtFollowUpConsultant" runat="server" Enabled="False"></asp:TextBox>
-           <asp:RegularExpressionValidator ID="revFollowUpConsultant" runat="server" ControlToValidate="txtFollowUpConsultant"  
-                                                                    ErrorMessage="中文<10个" CssClass="left_txt" 
-                                                                    ValidationExpression="^[\u4e00-\u9fa5]{0,10}$" Display="Dynamic"></asp:RegularExpressionValidator> 
                                                             </td>
                                                             <td width="6%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">
                                                                 <asp:CheckBox ID="ckbFollowUpCopy" runat="server" Text="跟进文案：" 
@@ -330,9 +317,6 @@
                                                                 <asp:TextBox ID="txtFollowUpCopy" runat="server" Enabled="False"></asp:TextBox>
        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtFollowUpCopy"  ErrorMessage="只能为字母" CssClass="left_txt" ValidationExpression="^[a-zA-Z]{1,12}$">
        </asp:RegularExpressionValidator> --%>
-          <asp:RegularExpressionValidator ID="revFollowUpCopy" runat="server" ControlToValidate="txtFollowUpCopy"  ErrorMessage="中文<10个" 
-                                                                    CssClass="left_txt" ValidationExpression="^[\u4e00-\u9fa5]{0,10}$" 
-                                                                    Display="Dynamic"></asp:RegularExpressionValidator> 
                                                             </td>
                                                         </tr> 
                                                         <tr>

@@ -95,15 +95,6 @@ namespace CRMWebServer.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerName;
         
         /// <summary>
-        /// REVCustomerName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator REVCustomerName;
-        
-        /// <summary>
         /// ckbCustomerEnglishName 控件。
         /// </summary>
         /// <remarks>
@@ -239,15 +230,6 @@ namespace CRMWebServer.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtIntentionCountry;
         
         /// <summary>
-        /// revIntentionCountry 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revIntentionCountry;
-        
-        /// <summary>
         /// ckbImportingPeople 控件。
         /// </summary>
         /// <remarks>
@@ -264,15 +246,6 @@ namespace CRMWebServer.Customer {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtImportingPeople;
-        
-        /// <summary>
-        /// revImportingPeople 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revImportingPeople;
         
         /// <summary>
         /// ckbFollowUpConsultant 控件。
@@ -293,15 +266,6 @@ namespace CRMWebServer.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtFollowUpConsultant;
         
         /// <summary>
-        /// revFollowUpConsultant 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revFollowUpConsultant;
-        
-        /// <summary>
         /// ckbFollowUpCopy 控件。
         /// </summary>
         /// <remarks>
@@ -318,15 +282,6 @@ namespace CRMWebServer.Customer {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFollowUpCopy;
-        
-        /// <summary>
-        /// revFollowUpCopy 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revFollowUpCopy;
         
         /// <summary>
         /// ckbContractNum 控件。
