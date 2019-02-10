@@ -403,6 +403,7 @@ namespace CRMWebServer.Customer
                 ViewState["SortOrder"] = "CSDate";
                 ViewState["OrderDire"] = "desc";
                 BindFollow();
+                BindGridViewDocument();
             }
 
 
@@ -497,6 +498,7 @@ namespace CRMWebServer.Customer
             CSIF.Remark = txtRemark.Text.Trim();
             CSIF.WorkExperience = txtWorkExperience.Text.Trim();
             CSIF.ContractNum = txtContractNum.Text.Trim();
+            CSIF.AgentInfo = txtAgentInfo.Text.Trim();
         }
 
         public void BindIntention()
@@ -618,6 +620,7 @@ namespace CRMWebServer.Customer
                 ddlCustomerImprove.SelectedIndex = 1;
             }
             txtWorkExperience.Text = CSIF.WorkExperience;
+            txtAgentInfo.Text = CSIF.AgentInfo;
 
         }
 
@@ -1701,6 +1704,21 @@ namespace CRMWebServer.Customer
         {
 
         }
+
+        public void BindGridViewDocument()
+        {
+            try
+            {
+                DataSet ds = DI.GetFileInfoByCustomerID_Service(CSIF.CustomerID);
+                gv_document.DataSource = ds;
+                gv_document.DataBind();
+            }
+            catch (Exception exp)
+            {
+                Response.Write(exp.Message);
+            }
+        }
+
         
     }
 }

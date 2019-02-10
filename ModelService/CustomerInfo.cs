@@ -777,5 +777,25 @@ namespace ModelService
             }
         }
         #endregion 
+
+        private string _AgentInfo;
+        #region 代理信息
+        /// <summary>
+        /// 代理信息
+        /// </summary>
+        public string AgentInfo
+        {
+            get
+            {
+                return _AgentInfo;
+            }
+            set
+            {
+                _AgentInfo = value;
+            }
+        }
+        #endregion 
+
+
     }
 }

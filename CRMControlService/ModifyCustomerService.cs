@@ -252,6 +252,7 @@ namespace CRMControlService
             }
             CIF.ContractNum = DR["ContractNum"].ToString().Trim();
             CIF.WorkExperience = DR["WorkExperience"].ToString().Trim();
+            CIF.AgentInfo = DR["AgentInfo"].ToString().Trim();
             IT.BetterWantpriTo = 0;
             IT.IntentionCountry = DR["IntentionCountry"].ToString().Trim();
             IT.IntentionPhase = 0;

@@ -460,6 +460,16 @@ body {
                     </td>
                 </tr>
                 <tr>
+                <tr>
+                    <td width="20%" height="50" align="right" bgcolor="#f2f2f2" class="left_txt2">
+  代理信息：
+                    </td>
+                    <td width="30%" colspan="3" align="left" bgcolor="#f2f2f2">
+                        <asp:TextBox ID="txtAgentInfo" runat="server" Width="485px" 
+                            TextMode="MultiLine"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
                     <td height="60" align="right" class="left_txt2">
                         &nbsp;
                     </td>

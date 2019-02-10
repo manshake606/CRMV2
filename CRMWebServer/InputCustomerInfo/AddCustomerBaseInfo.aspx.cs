@@ -230,6 +230,7 @@ namespace CRMWebServer.InputCustomerInfo
             CIF.ContractNum = txtContractNum.Text.Trim();
             CIF.CustomerImprove = int.Parse(DDCustomerImprove.SelectedItem.Value.Trim());
             CIF.WorkExperience = txtWorkExperience.Text.Trim();
+            CIF.AgentInfo = txtAgentInfo.Text.Trim();
             ITA.IntentionCountry = txtIntentionCountry.Text.Trim();
             ITA.BetterWantpriTo = 0;
             ITA.IntentionCity = "";
@@ -358,6 +359,7 @@ namespace CRMWebServer.InputCustomerInfo
             txtReferenceRemark.Text = "";
             txtImportingDate.Text = "";
             txtRemark.Text = "";
+            txtAgentInfo.Text = "";
             DDCustomerImportance.SelectedIndex = 0;
             txtIntentionCountry.Text = "";
             

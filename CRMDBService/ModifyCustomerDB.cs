@@ -59,7 +59,8 @@ namespace CRMDBService
             str += "[ReferenceRemark],";
             str += "[ContractNum],";
             str += "[CustomerImprove],";
-            str += "[WorkExperience])";
+            str += "[WorkExperience],";
+            str += "[AgentInfo])";
             str += " VALUES(";
             if (CI.CustomerName == null)
             {
@@ -274,11 +275,19 @@ namespace CRMDBService
             str += "" + CI.CustomerImprove + ",";
             if (CI.WorkExperience == null)
             {
+                str += "NULL,";
+            }
+            else
+            {
+                str += "'" + CI.WorkExperience + "',";
+            }
+            if (CI.AgentInfo == null)
+            {
                 str += "NULL)";
             }
             else
             {
-                str += "'" + CI.WorkExperience + "')";
+                str += "'" + CI.AgentInfo + "')";
             }
             
             DbCommand cmd = db.GetSqlStringCommond(str);
@@ -325,7 +334,8 @@ namespace CRMDBService
             str += "[ReferenceRemark]='" + CIF.ReferenceRemark + "',";
             str += "[ContractNum]='" + CIF.ContractNum + "',";
             str += "[CustomerImprove]='" + CIF.CustomerImprove + "',";
-            str += "[WorkExperience]='" + CIF.WorkExperience + "'";
+            str += "[WorkExperience]='" + CIF.WorkExperience + "',";
+            str += "[AgentInfo]='" + CIF.AgentInfo + "'";
             str += " From CustomerInfo";
             str += " where ";
             str += "CustomerInfo.CustomerID='" + CIF.CustomerID + "'";
@@ -380,7 +390,8 @@ namespace CRMDBService
             str += "[ReferenceRemark],";
             str += "[ContractNum],";
             str += "[CustomerImprove],";
-            str += "[WorkExperience]";
+            str += "[WorkExperience],";
+            str += "[AgentInfo]";
             str += " From CustomerInfo";
             str += " where ";
             str += "TelPhone='" + Telphone + "'";
@@ -436,7 +447,8 @@ namespace CRMDBService
             str += "[ReferenceRemark],";
             str += "[ContractNum],";
             str += "[CustomerImprove],";
-            str += "[WorkExperience]";
+            str += "[WorkExperience],";
+            str += "[AgentInfo]";
             str += " From CustomerInfo";
             str += " where ";
             str += "CustomerID=" + CustomerID + "";
@@ -487,7 +499,8 @@ namespace CRMDBService
             str += "[ReferenceRemark],";
             str += "[ContractNum],";
             str += "[CustomerImprove],";
-            str += "[WorkExperience]";
+            str += "[WorkExperience],";
+            str += "[AgentInfo]";
             str += " From CustomerInfo";
             str += " where ";
             str += "CustomerID=" + CustomerID + "";
@@ -530,6 +543,7 @@ namespace CRMDBService
             CIF.ContractNum = ds.Tables[0].Rows[0]["ContractNum"].ToString();
             CIF.CustomerImprove = ds.Tables[0].Rows[0]["CustomerImprove"].ToString()==""?1:int.Parse(ds.Tables[0].Rows[0]["CustomerImprove"].ToString());
             CIF.WorkExperience = ds.Tables[0].Rows[0]["WorkExperience"].ToString();
+            CIF.AgentInfo = ds.Tables[0].Rows[0]["AgentInfo"].ToString();
             return CIF;
         }
 

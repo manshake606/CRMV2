@@ -210,6 +210,9 @@
                                                     <td align="center" class="sec1" onclick="secBoard(5)">
                                                         录取信息
                                                     </td>
+                                                    <td align="center" class="sec1" onclick="secBoard(6)">
+                                                        客户资料
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -592,6 +595,15 @@
                                                                                                         </td>
                                                                                                         <td width="30%" colspan="3" align="left">
                                                                                                             <asp:TextBox ID="txtWorkExperience" runat="server" Width="568px" TextMode="MultiLine"></asp:TextBox>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td width="20%" height="50" align="right" bgcolor="#f2f2f2" class="left_txt2">
+                                                                                                            代理信息：
+                                                                                                        </td>
+                                                                                                        <td width="30%" colspan="3" align="left" bgcolor="#f2f2f2">
+                                                                                                            <asp:TextBox ID="txtAgentInfo" runat="server" Width="568px" 
+                                                                                                                TextMode="MultiLine"></asp:TextBox>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <tr>
@@ -1859,7 +1871,128 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                            <!--数据来源-->
+                                            <!--客户资料-->
+                                            <tbody style="display: none">
+                                            <tr>
+                                                    <td valign="top" align="middle">
+                                                        <asp:UpdatePanel ID="UpdatePanel8" runat="server" UpdateMode="Conditional">
+                                                            <ContentTemplate>
+                                                                <table width="98%" height="133" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td height="5" colspan="2">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td bgcolor="#FAFBFC">
+                                                                                &nbsp;
+                                                                            </td>
+                                                                            <td width="100%" height="25" bgcolor="#FAFBFC">
+                                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                                    <tr>
+                                                                                        <td height="30">
+                                                                                            <table width="100%" height="89" border="0" cellpadding="0" cellspacing="0">
+                                                                                                <tr>
+                                                                                                    <td bgcolor="#f2f2f2" class="style1" align="center">
+                                                                                                        <asp:GridView ID="gv_document" runat="server" AutoGenerateColumns="False" Width="100%"
+                                                                                                            CellPadding="3" ForeColor="Black" GridLines="Horizontal" 
+                                                                                                            DataKeyNames="FileID"
+                                                                                                            BackColor="White" 
+                                                                                                            BorderColor="#999999" BorderStyle="Groove" BorderWidth="2px">
+                                                                                                            <RowStyle HorizontalAlign="Center" />
+                                                                                                            <Columns>
+                                                                                                                <asp:BoundField DataField="FileID" HeaderText="文件ID" />
+                                                                                                                <asp:BoundField DataField="Customer" HeaderText="客户ID" />
+                                                                                                                <asp:BoundField DataField="CustomerName" HeaderText="客户姓名" />
+                                                                                                                <asp:BoundField DataField="FilesName" HeaderText="文档名称" />
+                                                                                                                <asp:BoundField DataField="DoccumentTypeName" HeaderText="文档类型" />
+                                                                                                                <asp:BoundField DataField="FileUploadTime" HeaderText="上传时间" />
+                                                                                                                <asp:BoundField DataField="StaffName" HeaderText="上传者" />
+                                                                                                            </Columns>
+                                                                                                            <FooterStyle BackColor="#CCCCCC" HorizontalAlign="Center" />
+                                                                                                            <PagerStyle BackColor="#5D7B9D" ForeColor="Black" HorizontalAlign="Center" />
+                                                                                                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                                                                                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" 
+                                                                                                                HorizontalAlign="Center" />
+                                                                                                            <AlternatingRowStyle BackColor="#CCCCCC" />
+                                                                                                        </asp:GridView>
+                                                                                                    </td>
+                                                                                                    <td bgcolor="#f2f2f2" class="style1">
+                                                                                                        &nbsp;
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td height="30">
+                                                                                            <span style="float: left">
+                                                                                                &nbsp;</span></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td align="center" height="30">
+                                                                                            <table id="Table1" border="0" cellpadding="0" cellspacing="0" style="display: none;">
+                                                                                                <tr>
+                                                                                                    <td width="25%" height="30" align="right" class="left_txt2" style="width: 100px">
+                                                                                                        测验名称：
+                                                                                                    </td>
+                                                                                                    <td style="width: 100px">
+                                                                                                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                                                                                    </td>
+                                                                                                    <td height="30" align="right" class="style4">
+                                                                                                        测验得分：
+                                                                                                    </td>
+                                                                                                    <td style="width: 100px">
+                                                                                                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td width="25%" height="30" align="right" class="left_txt2" style="width: 100px">
+                                                                                                        备注：
+                                                                                                    </td>
+                                                                                                    <td colspan="3" align="left" style="width: 100px">
+                                                                                                        <asp:TextBox ID="TextBox3" runat="server" Height="43px" TextMode="MultiLine"
+                                                                                                            Width="339px"></asp:TextBox>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="4" style="width: 100px">
+                                                                                                        &nbsp;
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td colspan="2" align="right">
+                                                                                                        <asp:Button ID="Button2" runat="server" Text="添加" OnClick="btnLanguageAdd_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                    </td>
+                                                                                                    <td colspan="2" align="left">
+                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                        <asp:Button ID="Button3" runat="server" Text="取消" OnClick="btnLanguageCancel_Click" />
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td height="30">
+                                                                                            &nbsp;
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td height="5" colspan="2">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </ContentTemplate>
+                                                            
+                                                        </asp:UpdatePanel>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            
                                             <!--联系状态-->
                                             <tbody style="display: none">
                                                 <tr>
