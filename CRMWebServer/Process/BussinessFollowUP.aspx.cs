@@ -261,10 +261,10 @@ namespace CRMWebServer.Process
 
         protected void gv_showfollowupInfo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Cells[0].Text = ((Label)e.Row.FindControl("LabCityInitial")).Text + e.Row.Cells[0].Text.PadLeft(8, '0');
-            }
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    e.Row.Cells[0].Text = ((Label)e.Row.FindControl("LabCityInitial")).Text + e.Row.Cells[0].Text.PadLeft(8, '0');
+            //}
 
 
             if ((e.Row.RowState == DataControlRowState.Edit) || (e.Row.RowState == (DataControlRowState.Alternate | DataControlRowState.Edit)))

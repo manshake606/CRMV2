@@ -463,7 +463,7 @@ namespace CRMWebServer.Process
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[1].Text = ((Label)e.Row.FindControl("LabCityInitial")).Text + e.Row.Cells[1].Text.PadLeft(8, '0');
+                
 
                 if (e.Row.Cells[3].Text == "0")
                 {

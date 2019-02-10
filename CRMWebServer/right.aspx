@@ -24,6 +24,16 @@ body {
         width: 99%;
     }
 
+    .style2
+    {
+        height: 25px;
+        width: 271px;
+    }
+    .style3
+    {
+        width: 271px;
+    }
+
 </style>
 </head>
 <body>
@@ -101,34 +111,33 @@ mainTable.tBodies[n].style.display="block";
                   </TR>
                 </TBODY>
               </TABLE>
-          <TABLE class=main_tab id=mainTable cellSpacing=0
-cellPadding=0 width=100% border=0>
+          <TABLE class=main_tab id=mainTable cellSpacing=0 cellPadding=0 width=100% border=0>
                 <!--¹ØÓÚTBODY±ê¼Ç-->
                 <TBODY style="DISPLAY: block">
                   <TR>
-                    <TD vAlign=top align=middle><TABLE width=98% height="133" border=0 align="center" cellPadding=0 cellSpacing=0>
+                    <TD align="top" align="center"><TABLE width=98% height="133" border=0 align="center" cellPadding=0 cellSpacing=0>
                         <TBODY>
                           <TR>
                             <TD height="5" colspan="3"></TD>
                           </TR>
                          
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD width="42%" height="25" bgcolor="#FAFBFC"><span class="left_txt">客户父母生日提醒：</span></TD>
-                            <TD width="54%" height="25" bgcolor="#FAFBFC"><span class="left_txt">共</span><asp:LinkButton 
-                                    ID="LBFamily" CssClass=left_txt runat="server" Text="" 
-                                    onclick="LBFamily_Click" ></asp:LinkButton><span class="left_txt">条</span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC" class="style1"></TD>
-                            <TD bgcolor="#FAFBFC" class="style1"><span class="left_txt">客户跟踪提醒信息：</span></TD>
-                            <TD bgcolor="#FAFBFC" class="style1"><span class="left_txt">共<asp:LinkButton 
-                                    ID="LBFollow" runat="server" CssClass=left_txt Text="" onclick="LBFollow_Click"></asp:LinkButton>
-                                条</span></TD>
-                          </TR>
-                          <TR>
+                          <tr>
+                            <td bgcolor="#FAFBFC" class="style1"></td>
+                            <td bgcolor="#FAFBFC" class="style2"><span class="left_txt">客户父母生日提醒：</span></td>
+                            <td width="54%" bgcolor="#FAFBFC" class="style1"><span class="left_txt">共</span><asp:LinkButton 
+                                    ID="LBFamily" CssClass="left_txt" runat="server" Text="0" 
+                                    onclick="LBFamily_Click" ></asp:LinkButton><span class="left_txt">条</span></td>
+                          </tr>
+                          <tr>
+                            <td bgcolor="#FAFBFC" class="style1"></td>
+                            <td bgcolor="#FAFBFC" class="style2" ><span class="left_txt">客户跟踪提醒信息：</span></td>
+                            <td width="54%"bgcolor="#FAFBFC" class="style1"><span class="left_txt">共<asp:LinkButton 
+                                    ID="LBFollow" runat="server" CssClass="left_txt" Text="0" onclick="LBFollow_Click"></asp:LinkButton>
+                                条</span></td>
+                          </tr>
+                          <tr>
                             <TD height="5" colspan="3"></TD>
-                          </TR>
+                          </tr>
                         </TBODY>
                     </TABLE></TD>
                   </TR>

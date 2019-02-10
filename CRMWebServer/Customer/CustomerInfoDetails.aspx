@@ -664,7 +664,10 @@
                                                                                                                                                     Width="934px" OnRowDeleting="gv_showfollowupInfo_RowDeleting" 
                                                                                                                                                     PageSize="30" AllowSorting="True"
                                                                                                                                                     OnSorting="gv_showfollowupInfo_Sorting" BackColor="White" 
-                                                                                                                                                    BorderColor="#999999" BorderStyle="Groove" BorderWidth="1px">
+                                                                                                                                                    BorderColor="#999999" BorderStyle="Groove" BorderWidth="1px" 
+                                                                                                                                                    HorizontalAlign="Center">
+                                                                                                                                                    <RowStyle HorizontalAlign="Center" />
+                                                                                                                                                    <EmptyDataRowStyle HorizontalAlign="Center" />
                                                                                                                                                     <Columns>
                                                                                                                                                         <asp:TemplateField HeaderText="客户姓名">
                                                                                                                                                             <EditItemTemplate>
@@ -701,14 +704,17 @@
                                                                                                                                                         <asp:CommandField ShowEditButton="True" DeleteText="删除" EditText="修改" ShowDeleteButton="false"
                                                                                                                                                             UpdateText="更新" HeaderText="操作" />
                                                                                                                                                     </Columns>
-                                                                                                                                                    <FooterStyle BackColor="#CCCCCC" />
+                                                                                                                                                    <FooterStyle BackColor="#CCCCCC" HorizontalAlign="Center" />
                                                                                                                                                     <PagerStyle BackColor="#5D7B9D" ForeColor="Black" HorizontalAlign="Center" />
                                                                                                                                                     <EmptyDataTemplate>
                                                                                                                                                         <asp:Label ID="LabEmpty" runat="server" Text="记录为空！！" CssClass="left_txt"></asp:Label>
                                                                                                                                                     </EmptyDataTemplate>
-                                                                                                                                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                                                                                                                                                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                                                                                                                                    <AlternatingRowStyle BackColor="#CCCCCC" />
+                                                                                                                                                    <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" 
+                                                                                                                                                        HorizontalAlign="Center" />
+                                                                                                                                                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" 
+                                                                                                                                                        HorizontalAlign="Center" />
+                                                                                                                                                    <EditRowStyle HorizontalAlign="Center" />
+                                                                                                                                                    <AlternatingRowStyle BackColor="#CCCCCC" HorizontalAlign="Center" />
                                                                                                                                                     <PagerTemplate>
                                                                                                                                                     <table>
                                                                                                                                                         <tr>

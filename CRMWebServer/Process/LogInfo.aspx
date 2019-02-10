@@ -138,7 +138,7 @@ body {
                     <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
                     <asp:CustomValidator ID="CVCustomerID" runat="server" ErrorMessage="编号错误" CssClass="left_txt"></asp:CustomValidator>
                 </td>
-                <td width="45%" bgcolor="#f2f2f2" class="style10">样例：WX00000001</td>
+                <td width="45%" bgcolor="#f2f2f2" class="style10">样例：XXXX</td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2"></td>

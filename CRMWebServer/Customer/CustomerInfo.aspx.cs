@@ -254,16 +254,16 @@ namespace CRMWebServer.Customer
             }
         }
         #endregion
-        #region 获取客户基本信息有参 protected void GetCustomerInformation(int CustomerID, string CityInitial)
+        #region 获取客户基本信息有参 protected void GetCustomerInformation(int CustomerID)
         /// <summary>
         /// 获取客户基本信息有参
         /// </summary>
         /// <param name="CustomerID">客户ID int类型</param>
         /// <param name="CityInitial">城市首字母简写</param>    
-        protected void GetCustomerInformation(int CustomerID, string CityInitial)
+        protected void GetCustomerInformation(int CustomerID)
         {
             CustomerService CSS = new CustomerService();
-            DataSet ds = CSS.GetCustomerInfobyIDCityService(CustomerID, CityInitial);
+            DataSet ds = CSS.GetCustomerInfobyIDCityService(CustomerID);
             TB = ds.Tables[0];
             this.gvCustomerInfroList.DataSource = ds;
             this.gvCustomerInfroList.DataBind();
@@ -545,18 +545,6 @@ namespace CRMWebServer.Customer
                 CVCustomerID.ErrorMessage = "编号不能为空";
                 return;
             }
-            if (txtCustomerID.Text.Trim().Length < 10)// || txtCustomerID.Text.Trim().Length > 11
-            {
-                CVCustomerID.IsValid = false;
-                CVCustomerID.ErrorMessage = "编号输入错误";
-                return;
-            }
-            if (txtCustomerID.Text.Trim().Contains(' '))
-            {
-                CVCustomerID.IsValid = false;
-                CVCustomerID.ErrorMessage = "编号输入错误";
-                return;
-            }
             string CustomerID = strtxt;
             int CSID = 0;
             try
@@ -569,8 +557,8 @@ namespace CRMWebServer.Customer
                 CVCustomerID.ErrorMessage = "编号输入错误";
                 return;
             }
-            string City = strtxt.Substring(0, strtxt.Length - 8).ToUpper();
-            DataSet ds = CSS.GetCustomerInfobyIDCityService(CSID, City);//(CSID, City);
+            //string City = strtxt.Substring(0, strtxt.Length - 8).ToUpper();
+            DataSet ds = CSS.GetCustomerInfobyIDCityService(CSID);//(CSID, City);
             //DataSet ds = CSS.GetCustomerInfobyIDCityService(CSID, City);//(CSID, City);
             if (ds == null || ds.Tables[0].Rows.Count == 0)
             {
@@ -1357,6 +1345,37 @@ namespace CRMWebServer.Customer
             }
             ckbCellPhoneNumber.Enabled = false;//11
             this.txtCellPhoneNumber.Text = "";
+            if (ckbCustomerImprove.Checked == true)
+            {
+                ckbCustomerImprove.Checked = false;
+                
+            }
+            ckbCustomerImprove.Enabled = false;
+            if (ckbContractNum.Checked == true)
+            {
+                ckbContractNum.Checked = false;
+            }
+            ckbContractNum.Enabled = false;
+            if (ckbBackupTel.Checked == true)
+            {
+                ckbBackupTel.Checked = false;
+            }
+            ckbBackupTel.Enabled = false;
+            if (ckbStartIntentionTime.Checked == true)
+            {
+                ckbStartIntentionTime.Checked = false;
+            }
+            ckbStartIntentionTime.Enabled = false;
+            if (ckbEndIntentionTime.Checked == true)
+            {
+                ckbEndIntentionTime.Checked = false;
+            }
+            ckbEndIntentionTime.Enabled = false;
+            if (CB_NoneFollow.Checked == true)
+            {
+                CB_NoneFollow.Checked = false;
+            }
+            CB_NoneFollow.Enabled = false;
         }
         #endregion
         #region 如果客户ID搜索条件取消其它搜索条件启用
@@ -1379,6 +1398,12 @@ namespace CRMWebServer.Customer
             ckbDataResource.Enabled = true;
             //New add
             ckbCellPhoneNumber.Enabled = true;
+            ckbCustomerImprove.Enabled = true;
+            ckbContractNum.Enabled = true;
+            ckbBackupTel.Enabled = true;
+            ckbStartIntentionTime.Enabled = true;
+            ckbEndIntentionTime.Enabled = true;
+            CB_NoneFollow.Enabled = true;
         }
         #endregion
         #region 禁用客户编号搜索

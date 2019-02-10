@@ -252,9 +252,8 @@ namespace CRMWebServer.InputCustomerInfo
                 
                 dns = MCS.GetCustomerInfobyTelphone_Service(CIF.Telphone);
                 CustomerID = dns.Tables[0].Rows[0]["CustomerID"].ToString();
-                CustomerID = CustomerID.PadLeft(8, '0');
-                Cityinit = dns.Tables[0].Rows[0]["CityInitial"].ToString();
-                txtCustomerID.Text = Cityinit + CustomerID;
+                
+                txtCustomerID.Text = CustomerID;
                 txtImportingDate.Text = dns.Tables[0].Rows[0]["ImportingDate"].ToString();
                 return;
             }

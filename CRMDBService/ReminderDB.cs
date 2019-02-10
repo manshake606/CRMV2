@@ -19,7 +19,7 @@ namespace CRMDBService
             DataSet ds = new DataSet();
             DbHelper db = new DbHelper();
             string str = "";
-            str += "select FamilyRemind.FRemindID,FamilyRemind.FID,FamilyRemind.CustomerID,FamilyRemind.IsRead from FamilyRemind join LogInfo on LogInfo.CustomerID=FamilyRemind.CustomerID  where  LogInfo.AssignStatus=2 and  FamilyRemind.IsRead=0 and LogInfo.DStaffID='" + staffID + "' and DATEDIFF(day,FamilyRemind.RemindDate,CONVERT (date, SYSDATETIME()))=0 ";
+            str += "select FamilyRemind.FRemindID,FamilyRemind.FID,FamilyRemind.CustomerID,FamilyRemind.IsRead from FamilyRemind join LogInfo on LogInfo.CustomerID=FamilyRemind.CustomerID  where  LogInfo.AssignStatus=2 and  FamilyRemind.IsRead=0 and LogInfo.GStaffID='" + staffID + "' and DATEDIFF(day,FamilyRemind.RemindDate,CONVERT (date, SYSDATETIME()))=0 ";
             DbCommand cmd = db.GetSqlStringCommond(str);
             ds = db.ExecuteDataSet(cmd);
             return ds;
@@ -30,7 +30,7 @@ namespace CRMDBService
             DataSet ds = new DataSet();
             DbHelper db = new DbHelper();
             string str = "";
-            str += "select FamilyInfo.FID,FamilyInfo.ParentName,FamilyInfo.Relationship,FamilyInfo.CustomerID,FamilyInfo.ParentMobilephone,CustomerInfo.CustomerName,CustomerInfo.CityInitial,FamilyRemind.IsRead,FamilyRemind.FRemindID from FamilyRemind join FamilyInfo on FamilyRemind.FID=FamilyInfo.FID join CustomerInfo on CustomerInfo.CustomerID=FamilyRemind.CustomerID join LogInfo on LogInfo.CustomerID=FamilyRemind.CustomerID where LogInfo.AssignStatus=2 and LogInfo.DStaffID='" + staffID + "' and DATEDIFF(day,FamilyRemind.RemindDate,CONVERT (date, SYSDATETIME()))=0 order by FamilyRemind.IsRead ASC";
+            str += "select FamilyInfo.FID,FamilyInfo.ParentName,FamilyInfo.Relationship,FamilyInfo.CustomerID,FamilyInfo.ParentMobilephone,CustomerInfo.CustomerName,CustomerInfo.CityInitial,FamilyRemind.IsRead,FamilyRemind.FRemindID from FamilyRemind join FamilyInfo on FamilyRemind.FID=FamilyInfo.FID join CustomerInfo on CustomerInfo.CustomerID=FamilyRemind.CustomerID join LogInfo on LogInfo.CustomerID=FamilyRemind.CustomerID where LogInfo.AssignStatus=2 and LogInfo.GStaffID='" + staffID + "' and DATEDIFF(day,FamilyRemind.RemindDate,CONVERT (date, SYSDATETIME()))=0 order by FamilyRemind.IsRead ASC";
             DbCommand cmd = db.GetSqlStringCommond(str);
             ds = db.ExecuteDataSet(cmd);
             return ds;

@@ -55,6 +55,11 @@ namespace CRMWebServer
             }
             LBFollow.Text = FollowupCount.ToString();
 
+            if (DSFamily.Tables[0].Rows.Count > 0 || DSFollowUP.Tables[0].Rows.Count > 0)
+            {
+                Response.Write("<script>alert('您有新的提醒请查看！')</script>");
+            }
+
         }
 
         protected void LBFamily_Click(object sender, EventArgs e)

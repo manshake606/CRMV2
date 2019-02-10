@@ -371,7 +371,7 @@ namespace CRMDBService
         /// <param name="CustomerID">客户编号</param>
         /// <param name="CityInitial">客户来自城市</param>
         /// <returns>返回客户相关的信息</returns>
-        public DataSet GetCustomerInfobyIDCity(int CustomerID, string CityInitial)
+        public DataSet GetCustomerInfobyIDCity(int CustomerID)
         {
             //DbHelper db = new DbHelper();
             //string sqlstr = "";
@@ -480,7 +480,6 @@ namespace CRMDBService
             SqlQuery += " view_Search_Customer_infor";           
             SqlQuery += " where";
             SqlQuery += " CustomerID=" + CustomerID;
-            SqlQuery += " and CityInitial='" + CityInitial + "'";
             DbCommand cmd = dbh.GetSqlStringCommond(SqlQuery);
             return dbh.ExecuteDataSet(cmd);
         }

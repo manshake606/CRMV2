@@ -50,13 +50,8 @@ namespace CRMWebServer.Process
                 CVCustomerID.ErrorMessage = "编号不能为空";
                 return;
             }
-            if (txtCustomerID.Text.Length < 10)
-            {
-                CVCustomerID.IsValid = false;
-                CVCustomerID.ErrorMessage = "编号输入错误";
-                return;
-            }
-            string CustomerID = strtxt.Substring(strtxt.Length - 8, 8);
+
+            string CustomerID = strtxt;
             int CSID = 0;
             try
             {
@@ -68,8 +63,8 @@ namespace CRMWebServer.Process
                 CVCustomerID.ErrorMessage = "编号输入错误";
                 return;
             }
-            string City = strtxt.Substring(0, strtxt.Length - 8).ToUpper();
-            DataSet ds = LogS.GetCustomerInfobyIDCity_Service(CSID, City);
+            //string City = strtxt.Substring(0, strtxt.Length - 8).ToUpper();
+            DataSet ds = LogS.GetCustomerInfobyIDCity_Service(CSID);
             if (ds == null || ds.Tables[0].Rows.Count == 0)
             {
                 CVCustomerID.IsValid = false;

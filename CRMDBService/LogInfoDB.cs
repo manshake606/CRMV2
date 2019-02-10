@@ -110,13 +110,12 @@ namespace CRMDBService
             return ds;
         }
 
-        public DataSet GetCustomerInfobyIDCity(int CustomerID, string CityInitial)
+        public DataSet GetCustomerInfobyIDCity(int CustomerID)
         {
             DbHelper db = new DbHelper();
             string sqlstr = "";
             sqlstr += "Select * from CustomerInfo ";
             sqlstr += "where CustomerID=" + CustomerID;
-            sqlstr += " and CityInitial='" + CityInitial+"'";
             DbCommand cmd = db.GetSqlStringCommond(sqlstr);
             DataSet ds = db.ExecuteDataSet(cmd);
             return ds;

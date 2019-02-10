@@ -47,10 +47,10 @@ namespace CRMControlService
             return ds;
         }
 
-        public DataSet GetCustomerInfobyIDCity_Service(int CustomerID, string CityInitial)
+        public DataSet GetCustomerInfobyIDCity_Service(int CustomerID)
         {
             CRMDBService.LogInfoDB logdb = new LogInfoDB();
-            DataSet ds = logdb.GetCustomerInfobyIDCity(CustomerID, CityInitial);
+            DataSet ds = logdb.GetCustomerInfobyIDCity(CustomerID);
             return ds;
         }
     }

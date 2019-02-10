@@ -101,11 +101,11 @@ namespace CRMControlService
         /// <param name="CustomerID">客户编号</param>
         /// <param name="CityInitial">客户来自城市</param>
         /// <returns>返回客户相关的信息</returns>
-        public DataSet GetCustomerInfobyIDCityService(int CustomerID, string CityInitial)
+        public DataSet GetCustomerInfobyIDCityService(int CustomerID)
         {
             //CRMDBService.LogInfoDB logdb = new LogInfoDB();
             //DataSet ds = logdb.GetCustomerInfobyIDCity(CustomerID, CityInitial);           
-            ds = CDB.GetCustomerInfobyIDCity(CustomerID, CityInitial);
+            ds = CDB.GetCustomerInfobyIDCity(CustomerID);
             return ds;
         }
         #endregion
