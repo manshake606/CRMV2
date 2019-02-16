@@ -21,9 +21,11 @@ namespace CRMWebServer
         StaffInfo staffInfo = new StaffInfo();
         DataSet DSFamily = new DataSet();
         DataSet DSFollowUP = new DataSet();
+        DataSet DSCustomerFollowUP = new DataSet();
         CRMControlService.ReminderService RS = new ReminderService();
         int FamilyCount = 0;
         int FollowupCount = 0;
+        int CustomerFollowUP = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (HttpContext.Current.Session["staffID"] != null)
@@ -55,10 +57,22 @@ namespace CRMWebServer
             }
             LBFollow.Text = FollowupCount.ToString();
 
-            if (DSFamily.Tables[0].Rows.Count > 0 || DSFollowUP.Tables[0].Rows.Count > 0)
+            DSCustomerFollowUP = RS.GetCustomRemindInfobyStaffID_Service(staffInfo.StaffID);
+            if (DSCustomerFollowUP.Tables[0].Rows.Count > 0)
             {
-                Response.Write("<script>alert('您有新的提醒请查看！')</script>");
+                CustomerFollowUP = DSCustomerFollowUP.Tables[0].Rows.Count;
+                LBCustomRemind.ForeColor = System.Drawing.Color.Red;
             }
+            LBCustomRemind.Text = CustomerFollowUP.ToString();
+
+            if (!IsPostBack)
+            {
+                if (DSFamily.Tables[0].Rows.Count > 0 || DSFollowUP.Tables[0].Rows.Count > 0 || DSCustomerFollowUP.Tables[0].Rows.Count > 0)
+                {
+                    Response.Write("<script>alert('您有新的提醒请查看！')</script>");
+                }
+            }
+            
 
         }
 
@@ -72,6 +86,12 @@ namespace CRMWebServer
         {
             Session["staffID"] = staffInfo.StaffID;
             Server.Transfer("RemindFollowUp.aspx");
+        }
+
+        protected void LBCustomRemind_Click(object sender, EventArgs e)
+        {
+            Session["staffID"] = staffInfo.StaffID;
+            Server.Transfer("Remind\\CustomRemind.aspx");
         }
 
     }

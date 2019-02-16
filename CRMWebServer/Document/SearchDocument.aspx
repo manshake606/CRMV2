@@ -230,7 +230,8 @@
                                 Width="1030px" OnPageIndexChanging="gvSearchResult_PageIndexChanging" 
                                 OnRowCommand="gvSearchResult_RowCommand" CssClass="left_txt" PageSize="30" 
                                 BackColor="White" BorderColor="#999999" BorderStyle="Groove" BorderWidth="2px" 
-                                CellPadding="3" ForeColor="Black" GridLines="Horizontal">
+                                CellPadding="3" ForeColor="Black" GridLines="Horizontal" 
+                                EmptyDataText="未找到相关文件">
                                 <RowStyle HorizontalAlign="Center" />
                                 <Columns>
                                     <asp:BoundField DataField="FileID" HeaderText="文件ID" />

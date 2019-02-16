@@ -136,6 +136,14 @@ mainTable.tBodies[n].style.display="block";
                                 条</span></td>
                           </tr>
                           <tr>
+                            <td bgcolor="#FAFBFC" class="style1"></td>
+                            <td bgcolor="#FAFBFC" class="style2" ><span class="left_txt">自定义提醒信息：</span></td>
+                            <td width="54%"bgcolor="#FAFBFC" class="style1"><span class="left_txt">共<asp:LinkButton 
+                                    ID="LBCustomRemind" runat="server" CssClass="left_txt" Text="0" 
+                                    onclick="LBCustomRemind_Click" ></asp:LinkButton>
+                                条</span></td>
+                          </tr>
+                          <tr>
                             <TD height="5" colspan="3"></TD>
                           </tr>
                         </TBODY>
