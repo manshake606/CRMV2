@@ -272,7 +272,7 @@
                                 HeaderText="详细" Text="详细" />
                             <asp:HyperLinkField DataNavigateUrlFields="CustomerID" 
                                 DataNavigateUrlFormatString="~/FinancialPage/NewContract.aspx?CustomerID={0}" 
-                                HeaderText="合同管理" Text="合同管理" />
+                                HeaderText="合同管理" Text="合同管理" Visible="False" />
                         </Columns>
                         <FooterStyle BackColor="#CCCCCC" BorderStyle="Solid" HorizontalAlign="Center" />
                         <PagerStyle BackColor="#5D7B9D" ForeColor="Black" HorizontalAlign="Center" />

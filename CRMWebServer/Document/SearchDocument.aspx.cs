@@ -36,6 +36,8 @@ namespace CRMWebServer.Document
         string filePath = ConfigurationManager.AppSettings["UploadFilePath"];
         //string moduleID;
         DataSet dsGetDocInfo;
+        DataSet StaffInfo;
+        DataSet dsFileInfo;
         //DataSet dsDocumentName;
         //DataSet PID;
         int PostID;
@@ -179,7 +181,23 @@ namespace CRMWebServer.Document
                 UploadedBy = txtUploadBy.Text;
             }
             FileType = int.Parse(DDLFileType.SelectedValue);
-            DataSet dsFileInfo = DocInfoSv.GetFileInfoByCondition_Service(CusomterID, CustomerName, uploadStartTime, uploadEndTime, DocumentName, UploadedBy, FileType);
+            StaffInfo = SISv.GetStaffNamebyStaffID_Service(staffInfo.StaffID);
+            int PostID=int.Parse(StaffInfo.Tables[0].Rows[0]["PostID"].ToString());
+            //经理
+            if ( PostID== 1)
+            {
+                dsFileInfo = DocInfoSv.GetFileInfoByCondition_Service(CusomterID, CustomerName, uploadStartTime, uploadEndTime, DocumentName, UploadedBy, FileType);
+            }
+            //顾问
+            else if (PostID == 6 || PostID == 7 || PostID == 8 || PostID == 9)
+            {
+                dsFileInfo = DocInfoSv.GetFileInfoByConditionAsConsultant_Service(CusomterID, CustomerName, uploadStartTime, uploadEndTime, DocumentName, UploadedBy, FileType, staffInfo.StaffID);
+            }
+            //文案
+            else if (PostID == 2 || PostID == 3 || PostID == 4)
+            {
+                dsFileInfo = DocInfoSv.GetFileInfoByConditionAsCopyWriter_Service(CusomterID, CustomerName, uploadStartTime, uploadEndTime, DocumentName, UploadedBy, FileType, staffInfo.StaffID);
+            }
             gvSearchResult.DataSource = dsFileInfo;
             gvSearchResult.DataBind();
         }

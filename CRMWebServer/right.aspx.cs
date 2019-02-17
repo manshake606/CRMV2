@@ -57,7 +57,7 @@ namespace CRMWebServer
             }
             LBFollow.Text = FollowupCount.ToString();
 
-            DSCustomerFollowUP = RS.GetCustomRemindInfobyStaffID_Service(staffInfo.StaffID);
+            DSCustomerFollowUP = RS.GetCustomCurrentRemindInfobyStaffID_Service(staffInfo.StaffID);
             if (DSCustomerFollowUP.Tables[0].Rows.Count > 0)
             {
                 CustomerFollowUP = DSCustomerFollowUP.Tables[0].Rows.Count;

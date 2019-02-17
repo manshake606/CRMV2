@@ -25,6 +25,8 @@ namespace CRMDBService
             str += "StaffInfo.CompanyProvice";
             str += ",";
             str += "StaffInfo.CompanyAddress";
+            str += ",";
+            str += "StaffInfo.PostID";
             str += " from";
             str += " StaffInfo";
             str += " where";

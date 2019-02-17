@@ -58,6 +58,12 @@ namespace CRMControlService
             return ds;
         }
 
+        public DataSet GetCustomCurrentRemindInfobyStaffID_Service(int staffID)
+        {
+            ds = RDB.GetCustomCurrentRemindInfobyStaffID(staffID);
+            return ds;
+        }
+
         public void InsertCustomRemindInfo_Service(DateTime RemindDate, string RemindContent, int CreatedBy, int IsActive)
         {
             RDB.InsertCustomRemindInfo(RemindDate, RemindContent, CreatedBy, IsActive);

@@ -188,6 +188,142 @@ namespace CRMDBService
             return ds;
         }
 
+        public DataSet GetFileInfoByConditionAsConsultant(int CustomerID, string CustomerName, DateTime? uploadStartTime, DateTime? uploadEndTime, string FileName, string UploadedBy, int FileType,int staffID)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "select ";
+            sqlstr += " FileInfo.FileID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FilesName";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FolderID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileUploadTime";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Customer";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileType";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.UploadedBy";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Status";
+            sqlstr += " ,";
+            sqlstr += " CustomerInfo.CustomerName";
+            sqlstr += " ,";
+            sqlstr += " StaffInfo.StaffName";
+            sqlstr += " ,";
+            sqlstr += " FileType.DoccumentTypeName";
+            sqlstr += " from ";
+            sqlstr += " FileInfo ";
+            sqlstr += " Inner join (select * from CRMDB.dbo.LogInfo where BindDate in ( select max(BindDate)as LatestDate from CRMDB.dbo.LogInfo  group by CustomerID,AssignStatus having AssignStatus=1)) As Log on CRMDB.dbo.FileInfo.Customer=Log.CustomerID ";
+            sqlstr += " Inner join CustomerInfo on CustomerInfo.CustomerID =FileInfo.Customer";
+            sqlstr += " Inner join StaffInfo on StaffInfo.StaffID =FileInfo.UploadedBy";
+            sqlstr += " Inner join FileType on FileType.Id =FileInfo.FileType";
+            sqlstr += " where 1=1 ";
+            sqlstr += " and GStaffID= '" + staffID+"'";
+            if (CustomerID != 0 && CustomerID != null)
+            {
+                sqlstr += " and FileInfo.Customer='" + CustomerID + "'";
+            }
+            if (CustomerName != "" && CustomerName != null)
+            {
+                sqlstr += " and CustomerInfo.CustomerName like '%" + CustomerName + "%'";
+            }
+            if (uploadStartTime.ToString() != "" && uploadStartTime != null)
+            {
+                sqlstr += " and FileInfo.FileUploadTime >= '" + uploadStartTime.ToString() + "'";
+            }
+            if (uploadEndTime.ToString() != "" && uploadEndTime != null)
+            {
+                sqlstr += " and FileInfo.FileUploadTime <= '" + uploadEndTime.ToString() + "'";
+            }
+            if (FileName != "" && FileName != null)
+            {
+                sqlstr += " and FileInfo.FilesName like '%" + FileName + "%'";
+            }
+            if (UploadedBy != "" && UploadedBy != null)
+            {
+                sqlstr += " and StaffInfo.StaffName like '%" + UploadedBy + "%'";
+            }
+            if (FileType != -1 && FileType != null)
+            {
+                sqlstr += " and FileInfo.FileType = '" + FileType + "'";
+            }
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            db.ExecuteNonQuery(cmd);
+            return ds;
+        }
+
+        public DataSet GetFileInfoByConditionAsCopyWriter(int CustomerID, string CustomerName, DateTime? uploadStartTime, DateTime? uploadEndTime, string FileName, string UploadedBy, int FileType, int staffID)
+        {
+            DbHelper db = new DbHelper();
+            string sqlstr = "";
+            sqlstr += "select ";
+            sqlstr += " FileInfo.FileID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FilesName";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FolderID";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileUploadTime";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Customer";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.FileType";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.UploadedBy";
+            sqlstr += " ,";
+            sqlstr += " FileInfo.Status";
+            sqlstr += " ,";
+            sqlstr += " CustomerInfo.CustomerName";
+            sqlstr += " ,";
+            sqlstr += " StaffInfo.StaffName";
+            sqlstr += " ,";
+            sqlstr += " FileType.DoccumentTypeName";
+            sqlstr += " from ";
+            sqlstr += " FileInfo ";
+            sqlstr += " Inner join (select * from CRMDB.dbo.LogInfo where BindDate in ( select max(BindDate)as LatestDate from CRMDB.dbo.LogInfo  group by CustomerID,AssignStatus having AssignStatus=2)) As Log on CRMDB.dbo.FileInfo.Customer=Log.CustomerID ";
+            sqlstr += " Inner join CustomerInfo on CustomerInfo.CustomerID =FileInfo.Customer";
+            sqlstr += " Inner join StaffInfo on StaffInfo.StaffID =FileInfo.UploadedBy";
+            sqlstr += " Inner join FileType on FileType.Id =FileInfo.FileType";
+            sqlstr += " where 1=1 ";
+            sqlstr += " and GStaffID= '" + staffID + "'";
+            if (CustomerID != 0 && CustomerID != null)
+            {
+                sqlstr += " and FileInfo.Customer='" + CustomerID + "'";
+            }
+            if (CustomerName != "" && CustomerName != null)
+            {
+                sqlstr += " and CustomerInfo.CustomerName like '%" + CustomerName + "%'";
+            }
+            if (uploadStartTime.ToString() != "" && uploadStartTime != null)
+            {
+                sqlstr += " and FileInfo.FileUploadTime >= '" + uploadStartTime.ToString() + "'";
+            }
+            if (uploadEndTime.ToString() != "" && uploadEndTime != null)
+            {
+                sqlstr += " and FileInfo.FileUploadTime <= '" + uploadEndTime.ToString() + "'";
+            }
+            if (FileName != "" && FileName != null)
+            {
+                sqlstr += " and FileInfo.FilesName like '%" + FileName + "%'";
+            }
+            if (UploadedBy != "" && UploadedBy != null)
+            {
+                sqlstr += " and StaffInfo.StaffName like '%" + UploadedBy + "%'";
+            }
+            if (FileType != -1 && FileType != null)
+            {
+                sqlstr += " and FileInfo.FileType = '" + FileType + "'";
+            }
+            DbCommand cmd = db.GetSqlStringCommond(sqlstr);
+            DataSet ds = db.ExecuteDataSet(cmd);
+            db.ExecuteNonQuery(cmd);
+            return ds;
+        }
+
 
         //根据客户ID获取已上传的文件信息
         public DataSet GetFileInfoByFileID(int FileID)

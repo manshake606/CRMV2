@@ -1085,7 +1085,7 @@ namespace CRMWebServer.Process
                         if (LbCustomerName.Items[followid].Selected)
                         {
 
-
+                            /*
                             dsc = ASS.GetContractIDbyCustomerID_Service(int.Parse(LbCustomerName.Items[followid].Value));
                             if (dsc.Tables[0].Rows[0]["ContractID"].ToString() == "" || dsc.Tables[0].Rows[0]["ContractID"].ToString() == null)
                             {
@@ -1102,6 +1102,7 @@ namespace CRMWebServer.Process
                                 followid++;
                                 continue;
                             }
+                             */
 
 
 
@@ -1319,14 +1320,14 @@ namespace CRMWebServer.Process
                 Response.Write("<script>alert('" + mes + "操作失败')</script>");
 
             }
-            else if (ContractNum != "" && mes == "")
-            {
-                Response.Write("<script>alert('" + ContractNum + "还没有创建合同！')</script>");
-            }
-            else
-            {
-                Response.Write("<script>alert('" + ContractNum + "还没有创建合同！" + mes + "操作失败')</script>");
-            }
+            //else if (ContractNum != "" && mes == "")
+            //{
+            //    Response.Write("<script>alert('" + ContractNum + "还没有创建合同！')</script>");
+            //}
+            //else
+            //{
+            //    Response.Write("<script>alert('" + ContractNum + "还没有创建合同！" + mes + "操作失败')</script>");
+            //}
 
         }
 
@@ -1421,36 +1422,93 @@ namespace CRMWebServer.Process
             }
         }
 
+        /// <summary>
+        /// excel 数据导出
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <param name="FileName"></param>
+        public void CreateExcel(DataSet ds, string FileName)
+        {
+            HttpResponse resp;
+            resp = Page.Response;
+            resp.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
+            resp.AppendHeader("Content-Disposition", "attachment;filename=" + FileName);
+            string colHeaders = "", ls_item = "";
+            int i = 0;
+            //定义表对象和行对像，同时用DataSet对其值进行初始化 
+            DataTable dt = ds.Tables[0];
+            DataRow[] myRow = dt.Select("");
+
+            //取得数据表各列标题，各标题之间以\t分割，最后一个列标题后加回车符 
+            for (i = 0; i < dt.Columns.Count; i++)
+            {
+                if (i == dt.Columns.Count - 1)
+                {
+                    colHeaders += dt.Columns[i].Caption.ToString() + "\n";
+                }
+                else
+                {
+                    colHeaders += dt.Columns[i].Caption.ToString() + ",";
+                }
+            }
+            //向HTTP输出流中写入取得的数据信息 
+            resp.Write(colHeaders);
+            //逐行处理数据 
+            foreach (DataRow row in myRow)
+            {
+                //在当前行中，逐列获得数据，数据之间以\t分割，结束时加回车符\n 
+                for (i = 0; i < dt.Columns.Count; i++)
+                {
+                    if (i == dt.Columns.Count - 1)
+                    {
+                        ls_item += row[i].ToString() + "\n";
+                    }
+                    else
+                    {
+                        ls_item += row[i].ToString() + ",";
+                    }
+                }
+                //当前行数据写入HTTP输出流，并且置空ls_item以便下行数据 
+                resp.Write(ls_item);
+                ls_item = "";
+            }
+            //写缓冲区中的数据到HTTP头文档中 
+            resp.End();
+        }
+
         protected void btnExport_Click(object sender, EventArgs e)
         {
             string CurrentUserName = System.Environment.UserName;
             ds = ASS.GetCustomerAssignInfo_Service();
+            
             //Create Excel object
             Microsoft.Office.Interop.Excel.Application Ex = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook wb = Ex.Workbooks.Add(Microsoft.Office.Interop.Excel.XlWBATemplate.xlWBATWorksheet);
             Microsoft.Office.Interop.Excel.Worksheet ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.Worksheets[1];
             Ex.Visible = false;
-            //Ex.Application.Workbooks.Add(true);
-            //Set Title
-            Ex.Cells[1, 1] = "客户编号";
-            Ex.Cells[1, 2] = "客户姓名";
-            Ex.Cells[1, 3] = "性别";
-            Ex.Cells[1, 4] = "手机号码";
-            Ex.Cells[1, 5] = "重要性";
-            Ex.Cells[1, 6] = "客户分类";
-            Ex.Cells[1, 7] = "年级";
-            Ex.Cells[1, 8] = "意向国家";
-            Ex.Cells[1, 9] = "跟进人";
-            Ex.Cells[1, 10] = "指派状态";
+            DateTime currDate = DateTime.Now;
+            string DateName = currDate.Year + "-" + currDate.Month + "-" + currDate.Day;
+            string FileName = DateName+".csv";
+            CreateExcel(ds, FileName);
+            //Ex.Cells[1, 2] = "客户姓名";
+            //Ex.Cells[1, 3] = "性别";
+            //Ex.Cells[1, 4] = "手机号码";
+            //Ex.Cells[1, 5] = "重要性";
+            //Ex.Cells[1, 6] = "客户分类";
+            //Ex.Cells[1, 7] = "年级";
+            //Ex.Cells[1, 8] = "意向国家";
+            //Ex.Cells[1, 9] = "跟进人";
+            //Ex.Cells[1, 10] = "指派状态";
 
             //Set row and column
-            int RowMax = ds.Tables[0].Rows.Count;
-            int ColMax = 10;
-            ws.get_Range(ws.Cells[1, 1], ws.Cells[1, ColMax]).Font.Name = "黑体";
-            ws.get_Range(ws.Cells[1, 1], ws.Cells[1, ColMax]).Font.Bold = true;
-            ws.get_Range(ws.Cells[1, 1], ws.Cells[RowMax + 1, ColMax + 1]).Borders.LineStyle = 1;
-            ws.get_Range(ws.Cells[1, 1], ws.Cells[RowMax + 1, ColMax + 1]).ColumnWidth = 15;
+            //int RowMax = ds.Tables[0].Rows.Count;
+            //int ColMax = 32;
+            //ws.get_Range(ws.Cells[1, 1], ws.Cells[1, ColMax]).Font.Name = "黑体";
+            //ws.get_Range(ws.Cells[1, 1], ws.Cells[1, ColMax]).Font.Bold = true;
+            //ws.get_Range(ws.Cells[1, 1], ws.Cells[RowMax + 1, ColMax + 1]).Borders.LineStyle = 1;
+            //ws.get_Range(ws.Cells[1, 1], ws.Cells[RowMax + 1, ColMax + 1]).ColumnWidth = 15;
             //Fill data to excel
+            /*
             for (int iRow = 0; iRow < RowMax; iRow++)
             {
                 for (int iCol = 0; iCol < ColMax; iCol++)
@@ -1467,8 +1525,8 @@ namespace CRMWebServer.Process
             }
             if (ds.Tables[0].Rows.Count > 0)
             {
-                DateTime currDate = DateTime.Now;
-                string DateName = currDate.Year + "-" + currDate.Month + "-" + currDate.Day;
+                //DateTime currDate = DateTime.Now;
+                //string DateName = currDate.Year + "-" + currDate.Month + "-" + currDate.Day;
                 // Save Excle file
                 Ex.DisplayAlerts = false;
                 Ex.AlertBeforeOverwriting = false;
@@ -1483,6 +1541,7 @@ namespace CRMWebServer.Process
             {
                 Response.Write("<script>alert('空数据 ！')</script>");
             }
+             */
         }
 
         protected void btnTrans_Click(object sender, EventArgs e)

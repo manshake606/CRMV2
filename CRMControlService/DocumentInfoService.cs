@@ -53,6 +53,16 @@ namespace CRMControlService
         {
             return CDB.GetFileInfoByCondition(CustomerID, CustomerName, uploadStartTime, uploadEndTime, FileName, UploadedBy, FileType);
         }
+        //根据条件获取顾问对应的文件信息
+        public DataSet GetFileInfoByConditionAsConsultant_Service(int CustomerID, string CustomerName, DateTime? uploadStartTime, DateTime? uploadEndTime, string FileName, string UploadedBy, int FileType,int StaffID)
+        {
+            return CDB.GetFileInfoByConditionAsConsultant(CustomerID, CustomerName, uploadStartTime, uploadEndTime, FileName, UploadedBy, FileType, StaffID);
+        }
+        //根据条件获取文案对应的文件信息
+        public DataSet GetFileInfoByConditionAsCopyWriter_Service(int CustomerID, string CustomerName, DateTime? uploadStartTime, DateTime? uploadEndTime, string FileName, string UploadedBy, int FileType, int StaffID)
+        {
+            return CDB.GetFileInfoByConditionAsCopyWriter(CustomerID, CustomerName, uploadStartTime, uploadEndTime, FileName, UploadedBy, FileType, StaffID);
+        }
 
         public int IsFIDExistData(string FolderID)
         {

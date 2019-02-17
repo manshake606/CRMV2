@@ -18,7 +18,7 @@ namespace CRMDBService
             DataSet ds = new DataSet();
             DbHelper db = new DbHelper();
             string str = "";
-            str += "select ";
+            str += "select distinct ";
             str += "CustomerInfo.CustomerID";
             str += ",";
             str += "CustomerInfo.CustomerName ";
@@ -51,6 +51,7 @@ namespace CRMDBService
             str += "from ";
             str += "CustomerInfo left join AssignState on CustomerInfo.CustomerID=AssignState.CustomerID left join StaffInfo on AssignState.GStaffID=StaffInfo.StaffID left join Intention on CustomerInfo.CustomerID=Intention.CustomerID  ";
             str += " where AssignState.AssignStatus=" + AssignStatus + " ";
+            str += "and Intention.BetterWantTo=0 ";
             str += "and CustomerInfo.CCity='" + CCity + "'";
             
 
@@ -61,7 +62,7 @@ namespace CRMDBService
 
             if (IntentionCountry != "请选择")
             {
-                str += "and Intention.IntentionCountry= '" + IntentionCountry + "' and Intention.BetterWantTo=0 ";
+                str += "and Intention.IntentionCountry= '" + IntentionCountry + "' ";
             }
 
             if (Flag == 1)

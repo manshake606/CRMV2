@@ -97,6 +97,17 @@ namespace CRMDBService
             return ds;
         }
 
+        public DataSet GetCustomCurrentRemindInfobyStaffID(int staffID)
+        {
+            DataSet ds = new DataSet();
+            DbHelper db = new DbHelper();
+            string str = "";
+            str += "select CustomRemind.ID,CustomRemind.RemindDate,CustomRemind.RemindContent,CustomRemind.CreatedBy,CustomRemind.IsActive,CustomRemind.CreateTime from CustomRemind join StaffInfo on CustomRemind.CreatedBy=StaffInfo.StaffID where CustomRemind.IsActive=1 and  CustomRemind.CreatedBy='" + staffID + "'" + "and DATEDIFF(day,CustomRemind.RemindDate,getdate())>=0";
+            DbCommand cmd = db.GetSqlStringCommond(str);
+            ds = db.ExecuteDataSet(cmd);
+            return ds;
+        }
+
         public void InsertCustomRemindInfo(DateTime RemindDate, string RemindContent, int CreatedBy, int IsActive)
         {
             DbHelper db = new DbHelper();
