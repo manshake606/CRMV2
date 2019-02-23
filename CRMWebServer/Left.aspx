@@ -231,7 +231,7 @@
                              
                         </ul>
                     </div>
-                    <h1 class="type">
+                    <!--<h1 class="type">
                         <a href="javascript:void(0)">财务信息管理</a></h1>
                     <div class="content">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -246,7 +246,7 @@
                             <li><a href="FinancialPage/ContractIncome.aspx" target="main">顾问提成</a></li>
                             <li><a href="FinancialPage/NewContract.aspx" target="main">新建合同</a></li>
                         </ul>
-                    </div>
+                    </div>-->
                     <h1 class="type">
                         <a href="javascript:void(0)">员工信息管理</a></h1>
                     <div class="content">
