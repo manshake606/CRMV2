@@ -1228,6 +1228,7 @@ namespace CRMWebServer.Process
                         if (LbCustomerName.Items[followid].Selected)
                         {
                             dsc = ASS.GetContractIDbyCustomerID_Service(int.Parse(LbCustomerName.Items[followid].Value));
+                            /*
                             if (dsc.Tables[0].Rows[0]["ContractID"].ToString() == "" || dsc.Tables[0].Rows[0]["ContractID"].ToString() == null)
                             {
                                 if (contractcount == 0)
@@ -1243,6 +1244,7 @@ namespace CRMWebServer.Process
                                 followid++;
                                 continue;
                             }
+                            */
 
 
                             int CustomerID = ASS.DoAssignBusiness(staffInfo.StaffID, int.Parse(DDlistCopyWriter.SelectedItem.Value), int.Parse(DDAssign.SelectedItem.Value), txtRemark.Text, int.Parse(LbCustomerName.Items[followid].Value), 8);
